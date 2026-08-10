@@ -1,0 +1,20 @@
+---
+key: cashflow_mapper
+name: AWM Cashflow Mapper
+description: Maps client snapshot data into cashflow model state.
+module: advisor.tasks.knowledge_updater.agent
+entrypoint: KnowledgeUpdaterAgent.map_cashflow_state
+default_model: gpt-5.6-luna
+reasoning_effort: none
+temperature: null
+fallback_models: []
+timeout_seconds: 90
+allowed_callers:
+  - knowledge_updater
+side_effect_level: none
+execution: wait
+idempotent: true
+max_runtime_seconds: 90
+---
+
+Follow the cashflow-mapper task system instructions and return only its declared structured output.

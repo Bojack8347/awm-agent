@@ -1,0 +1,17 @@
+---
+key: main_advisor
+name: AWM Main Advisor
+description: Owns the client conversation, semantically activates bounded AWM skills, invokes permitted AWM tools or specialists.
+default_model: deepseek-v4-flash
+reasoning_effort: medium
+channel_scope: text
+max_turns: 16
+tool_choice: auto
+capabilities:
+  - dispatch_financial_planning
+  - dispatch_investment_solution
+  - conversation_history_retrieval
+execution: wait
+---
+
+Follow the Main Advisor base instructions and any active skill instructions.

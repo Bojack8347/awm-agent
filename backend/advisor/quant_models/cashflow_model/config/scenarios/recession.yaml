@@ -1,0 +1,24 @@
+# Recession scenario - Lower interest rates and growth expectations
+accounts:
+  bank:
+    default_interest_rate: 0.5  # Lower interest rates
+  brokerage:
+    default_growth_rate: 3.0  # Lower growth expectations
+tax:
+  state:
+    jurisdiction: flat
+    tax_rate: 5.0  # Potential tax reduction
+market_assumptions:
+  asset_classes:
+    "US Equity":
+      expected_return: 5.0
+      volatility: 24.0
+    "Dev. Europe ex UK Equity":
+      expected_return: 4.5
+      volatility: 26.0
+    "Global High Yield Bond BB-B":
+      expected_return: 4.0
+      volatility: 18.0
+    "US Treasury":
+      expected_return: 2.5
+      volatility: 4.0

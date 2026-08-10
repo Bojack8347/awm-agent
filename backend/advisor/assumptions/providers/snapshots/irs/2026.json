@@ -1,0 +1,83 @@
+{
+  "schema_version": "awm.authoritative_source_snapshot.v1",
+  "provider_id": "irs",
+  "effective_year": 2026,
+  "jurisdiction": "US",
+  "snapshot_version": 1,
+  "reviewed_by": "repository-bootstrap",
+  "reviewed_at": "2026-07-28T00:00:00Z",
+  "sources": {
+    "tax_adjustments": {
+      "document_id": "IR-2025-103",
+      "title": "IRS releases tax inflation adjustments for tax year 2026",
+      "url": "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill",
+      "published_at": "2025-10-09T00:00:00Z"
+    },
+    "retirement_limits": {
+      "document_id": "IR-2025-111",
+      "title": "401(k) limit increases to $24,500 for 2026, IRA limit increases to $7,500",
+      "url": "https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500",
+      "published_at": "2025-11-13T00:00:00Z"
+    },
+    "hsa_limits": {
+      "document_id": "Rev-Proc-2025-19",
+      "title": "2026 inflation-adjusted amounts for Health Savings Accounts",
+      "url": "https://www.irs.gov/irb/2025-21_IRB",
+      "published_at": "2025-05-19T00:00:00Z"
+    }
+  },
+  "variables": {
+    "federal_standard_deduction": {
+      "value": {
+        "single": 16100,
+        "married_filing_jointly": 32200,
+        "head_of_household": 24150
+      },
+      "unit": "USD_by_filing_status",
+      "evidence_refs": ["tax_adjustments"]
+    },
+    "federal_tax_brackets": {
+      "value": {
+        "single": [
+          {"lower_bound": 0, "upper_bound": 12400, "rate_percent": 10},
+          {"lower_bound": 12400, "upper_bound": 50400, "rate_percent": 12},
+          {"lower_bound": 50400, "upper_bound": 105700, "rate_percent": 22},
+          {"lower_bound": 105700, "upper_bound": 201775, "rate_percent": 24},
+          {"lower_bound": 201775, "upper_bound": 256225, "rate_percent": 32},
+          {"lower_bound": 256225, "upper_bound": 640600, "rate_percent": 35},
+          {"lower_bound": 640600, "upper_bound": null, "rate_percent": 37}
+        ],
+        "married_filing_jointly": [
+          {"lower_bound": 0, "upper_bound": 24800, "rate_percent": 10},
+          {"lower_bound": 24800, "upper_bound": 100800, "rate_percent": 12},
+          {"lower_bound": 100800, "upper_bound": 211400, "rate_percent": 22},
+          {"lower_bound": 211400, "upper_bound": 403550, "rate_percent": 24},
+          {"lower_bound": 403550, "upper_bound": 512450, "rate_percent": 32},
+          {"lower_bound": 512450, "upper_bound": 768700, "rate_percent": 35},
+          {"lower_bound": 768700, "upper_bound": null, "rate_percent": 37}
+        ]
+      },
+      "unit": "USD_thresholds_and_percent_rates",
+      "evidence_refs": ["tax_adjustments"]
+    },
+    "retirement_contribution_limits": {
+      "value": {
+        "401k": {
+          "base": 24500,
+          "catch_up_age_50": 8000,
+          "catch_up_age_60_to_63": 11250
+        },
+        "ira": {
+          "base": 7500,
+          "catch_up_age_50": 1100
+        },
+        "hsa": {
+          "self_only": 4400,
+          "family": 8750
+        }
+      },
+      "unit": "USD_annual_limits",
+      "evidence_refs": ["retirement_limits", "hsa_limits"]
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "input_context": {
+    "facts": [
+      {
+        "field": "user_profile.person.age",
+        "source": "user",
+        "value": 35
+      }
+    ],
+    "notes": [
+      "Optional provenance for facts extracted by an upstream Agent."
+    ]
+  },
+  "user_profile": {
+    "start_year": 2026,
+    "end_year": 2076,
+    "family_name": "Agent Monte Carlo Example",
+    "person": {
+      "id": "primary",
+      "name": "Alex",
+      "age": 35,
+      "retirement_age": 65,
+      "state": "NY"
+    },
+    "income": {
+      "salary": 120000,
+      "yearly_increase": 3.0,
+      "company": "Employer",
+      "role": "Professional"
+    },
+    "spending": {
+      "annual_base": 60000
+    },
+    "cash": {
+      "checking_balance": 50000
+    },
+    "housing": {
+      "status": "rent",
+      "monthly_rent": 2500
+    }
+  },
+  "projection": {
+    "systems": "nominal",
+    "format": "json",
+    "columns": [
+      "Year",
+      "Net Worth",
+      "Bank Balance",
+      "Cashflow Shortfall Debt"
+    ]
+  },
+  "monte_carlo": {
+    "num_simulations": 100,
+    "random_seed": 42,
+    "success_column": "Net Worth",
+    "success_threshold": 0
+  },
+  "return_resolved_scenario": false
+}

@@ -1,0 +1,20 @@
+# Aggressive growth scenario - higher risk, higher returns
+accounts:
+  brokerage:
+    default_growth_rate: 10.0  # Aggressive investment growth
+retirement:
+  ira:
+    default_growth_rate: 10.5  # Aggressive retirement growth
+insurance:
+  life:
+    default_cash_value_growth_rate: 4.0  # Higher cash value growthmarket_assumptions:
+  asset_classes:
+    "US Equity":
+      expected_return: 11.0
+      volatility: 20.0
+    "China Equity":
+      expected_return: 13.0
+      volatility: 32.0
+    "India Equity":
+      expected_return: 13.5
+      volatility: 30.0

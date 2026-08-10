@@ -1,0 +1,82 @@
+{
+  "template_name": "Cashflow User Profile Template",
+  "template_version": 1,
+  "description": "Compact user profile for life-model build-scenario. Intended for upstream Agents to fill from user-provided facts.",
+  "start_year": 2026,
+  "end_year": 2076,
+  "family_name": "Agent Built Cashflow Scenario",
+  "person": {
+    "id": "primary",
+    "name": "Alex",
+    "age": 35,
+    "retirement_age": 65,
+    "state": "NY"
+  },
+  "income": {
+    "salary": 120000,
+    "yearly_increase": 3.0,
+    "yearly_bonus": 5.0,
+    "company": "Primary Employer",
+    "role": "Professional"
+  },
+  "spending": {
+    "annual_base": 60000,
+    "yearly_increase": 2.5
+  },
+  "cash": {
+    "checking_balance": 50000,
+    "checking_interest_rate": 1.0,
+    "savings_balance": 25000,
+    "savings_interest_rate": 2.0
+  },
+  "housing": {
+    "status": "rent",
+    "monthly_rent": 2500,
+    "yearly_increase": 2.5
+  },
+  "retirement": {
+    "401k": {
+      "pretax_balance": 150000,
+      "pretax_contrib_percent": 10,
+      "roth_balance": 20000,
+      "roth_contrib_percent": 2,
+      "average_growth": 5.0,
+      "company_match_percent": 4
+    }
+  },
+  "investment": {
+    "balance": 100000,
+    "growth_rate": 0,
+    "asset_allocation": [
+      {
+        "asset": "US Equity",
+        "weight": 60
+      },
+      {
+        "asset": "US Treasury",
+        "weight": 30
+      },
+      {
+        "asset": "Gold",
+        "weight": 10
+      }
+    ],
+    "asset_return_rates": [
+      {
+        "asset": "US Equity",
+        "return_rate": 10.0
+      },
+      {
+        "asset": "US Treasury",
+        "return_rate": 4.0
+      },
+      {
+        "asset": "Gold",
+        "return_rate": 5.0
+      }
+    ],
+    "payout_to_bank": true,
+    "cash_payout_rate": 50,
+    "taxable": true
+  }
+}

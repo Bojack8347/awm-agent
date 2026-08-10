@@ -1,0 +1,26 @@
+# Low tax scenario - Reduced tax rates
+tax:
+  federal:
+    standard_deduction:
+      single: 20000  # Higher deductions
+      married_filing_jointly: 40000
+    tax_brackets:
+      single:
+        - [0, 20000, 5]
+        - [20001, 60000, 10]
+        - [60001, 120000, 15]
+        - [120001, 200000, 20]
+        - [200001, 400000, 25]
+        - [400001, .inf, 28]
+      married_filing_jointly:
+        - [0, 40000, 5]
+        - [40001, 120000, 10]
+        - [120001, 240000, 15]
+        - [240001, 400000, 20]
+        - [400001, 800000, 25]
+        - [800001, .inf, 28]
+  state:
+    jurisdiction: flat
+    tax_rate: 3.0  # Lower state tax
+  fica:
+    social_security_rate: 5.0  # Lower FICA

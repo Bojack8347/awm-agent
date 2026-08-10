@@ -1,0 +1,29 @@
+{
+  "schema_version": "awm.authoritative_source_snapshot.v1",
+  "provider_id": "ssa",
+  "effective_year": 2026,
+  "jurisdiction": "US",
+  "snapshot_version": 1,
+  "reviewed_by": "repository-bootstrap",
+  "reviewed_at": "2026-07-28T00:00:00Z",
+  "sources": {
+    "cola_fact_sheet": {
+      "document_id": "SSA-COLA-2026",
+      "title": "2026 Cost-of-Living Adjustment Fact Sheet",
+      "url": "https://www.ssa.gov/cola/factsheets/2026.html",
+      "published_at": "2025-10-24T00:00:00Z"
+    }
+  },
+  "variables": {
+    "social_security_cola": {
+      "value": 2.8,
+      "unit": "percent",
+      "evidence_refs": ["cola_fact_sheet"]
+    },
+    "social_security_taxable_maximum": {
+      "value": 184500,
+      "unit": "USD_annual",
+      "evidence_refs": ["cola_fact_sheet"]
+    }
+  }
+}

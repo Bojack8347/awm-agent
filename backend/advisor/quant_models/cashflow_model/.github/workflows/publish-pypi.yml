@@ -1,0 +1,99 @@
+name: Publish Python distribution to PyPI
+
+on:
+  workflow_dispatch: # Run this workflow manually from the Actions tab
+
+jobs:
+  validate-tag-name:
+    name: Validate Git Tag
+    # Only run this workflow on tagged commits
+    # - The branch should be tagged with 'v' prefix, e.g. 'v1.0.0'
+    # - The tag will be used as the version of the package
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check tag name format
+      run: |
+        if [[ ! "${{ github.ref_name }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          echo "Error: Invalid tag name format '${{ github.ref_name }}'. Expected 'vX.X.X'"
+          exit 1
+        fi
+
+  build:
+    name: Build Distribution
+    needs:
+    - validate-tag-name
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.13'
+    - name: Install pypa/build
+      run: python3 -m pip install build --user
+    - name: Set version number from tag
+      run: echo '${{ github.ref_name }}' | sed 's/^v//' > VERSION
+    - name: Build a binary wheel and a source tarball
+      run: python3 -m build
+    - name: Store the distribution packages
+      uses: actions/upload-artifact@v6
+      with:
+        name: python-package-distributions
+        path: dist/
+
+  publish-to-pypi:
+    name: Publish to PyPI
+    needs:
+    - build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/life-model
+    permissions:
+      id-token: write # IMPORTANT: mandatory for trusted publishing
+    steps:
+    - name: Download all the dists
+      uses: actions/download-artifact@v7
+      with:
+        name: python-package-distributions
+        path: dist/
+    - name: Publish distribution to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+
+  github-release:
+    name: Make Signed GitHub Release
+    needs:
+    - publish-to-pypi
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # IMPORTANT: mandatory for making GitHub Releases
+      id-token: write # IMPORTANT: mandatory for sigstore
+    steps:
+    - name: Download all the dists
+      uses: actions/download-artifact@v7
+      with:
+        name: python-package-distributions
+        path: dist/
+    - name: Sign the dists with Sigstore
+      uses: sigstore/gh-action-sigstore-python@v3.2.0
+      with:
+        inputs: >-
+          ./dist/*.tar.gz
+          ./dist/*.whl
+    - name: Create GitHub Release
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      run: >-
+        gh release create '${{ github.ref_name }}'
+        --repo '${{ github.repository }}'
+        --title 'Release ${{ github.ref_name }}'
+        --generate-notes
+    - name: Upload artifact signatures to GitHub Release
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      # Upload to GitHub Release using the `gh` CLI.
+      # `dist/` contains the built packages, and the
+      # sigstore-produced signatures and certificates.
+      run: >-
+        gh release upload '${{ github.ref_name }}' dist/** --repo '${{ github.repository }}'

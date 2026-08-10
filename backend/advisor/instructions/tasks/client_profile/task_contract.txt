@@ -1,0 +1,21 @@
+---
+key: client_profile
+name: AWM Client Profile Extractor
+description: Extracts structured profile facts from free text.
+module: advisor.tasks.client_profile.agent
+entrypoint: ClientProfileExtractor.extract_facts
+default_model: gpt-5.6-luna
+reasoning_effort: none
+temperature: null
+fallback_models: []
+timeout_seconds: 90
+allowed_callers:
+  - companion
+  - journey
+side_effect_level: none
+execution: wait
+idempotent: true
+max_runtime_seconds: 90
+---
+
+Follow the client-profile task system instructions and return only its declared structured output.

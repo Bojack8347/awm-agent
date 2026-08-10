@@ -1,0 +1,26 @@
+# Tax reform scenario - simulates potential tax changes
+tax:
+  federal:
+    standard_deduction:
+      single: 15000  # Increased standard deduction
+      married_filing_jointly: 30000
+    tax_brackets:
+      single:
+        - [0, 12000, 10]      # Expanded 10% bracket
+        - [12001, 45000, 12]  # Adjusted middle brackets
+        - [45001, 95000, 22]
+        - [95001, 180000, 24]
+        - [180001, 250000, 32]
+        - [250001, 600000, 35]
+        - [600001, .inf, 39]  # Higher top rate
+      married_filing_jointly:
+        - [0, 24000, 10]
+        - [24001, 90000, 12]
+        - [90001, 190000, 22]
+        - [190001, 360000, 24]
+        - [360001, 500000, 32]
+        - [500001, 700000, 35]
+        - [700001, .inf, 39]
+  state:
+    jurisdiction: flat
+    tax_rate: 7.5  # Increased state tax rate

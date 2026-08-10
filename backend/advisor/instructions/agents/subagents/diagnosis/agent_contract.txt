@@ -1,0 +1,16 @@
+---
+key: diagnosis
+name: AWM Diagnosis Specialist
+description: Produces grounded financial-health diagnoses from Client File and deterministic model results.
+default_model: deepseek-v4-flash
+channel_scope: text
+max_turns: 4
+tool_choice: auto
+capabilities:
+  - cashflow_projection
+  - risk_return_estimate
+  - risk_return_frontier
+execution: background
+---
+
+Follow the base instructions and any active skill instructions.

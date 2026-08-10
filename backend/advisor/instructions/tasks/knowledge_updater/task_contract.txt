@@ -1,0 +1,22 @@
+---
+key: knowledge_updater
+name: AWM Knowledge Updater
+description: Merges candidate knowledge facts and versions the client profile.
+module: advisor.tasks.knowledge_updater.agent
+entrypoint: KnowledgeUpdaterAgent.update_knowledge
+default_model: gpt-5.6-luna
+reasoning_effort: none
+temperature: null
+fallback_models: []
+timeout_seconds: 90
+allowed_callers:
+  - companion
+  - journey
+  - activation
+side_effect_level: writes_profile
+execution: wait
+idempotent: false
+max_runtime_seconds: 120
+---
+
+Follow the knowledge-updater task system instructions and return only its declared structured output.

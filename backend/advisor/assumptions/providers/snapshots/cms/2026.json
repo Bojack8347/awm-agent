@@ -1,0 +1,24 @@
+{
+  "schema_version": "awm.authoritative_source_snapshot.v1",
+  "provider_id": "cms",
+  "effective_year": 2026,
+  "jurisdiction": "US",
+  "snapshot_version": 1,
+  "reviewed_by": "repository-bootstrap",
+  "reviewed_at": "2026-07-28T00:00:00Z",
+  "sources": {
+    "part_b_fact_sheet": {
+      "document_id": "CMS-2026-PART-B",
+      "title": "2026 Medicare Parts A & B Premiums and Deductibles",
+      "url": "https://www.cms.gov/newsroom/fact-sheets/2026-medicare-parts-b-premiums-deductibles",
+      "published_at": "2025-11-14T00:00:00Z"
+    }
+  },
+  "variables": {
+    "medicare_part_b_premium": {
+      "value": 202.9,
+      "unit": "USD_per_month",
+      "evidence_refs": ["part_b_fact_sheet"]
+    }
+  }
+}

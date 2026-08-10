@@ -1,0 +1,64 @@
+name: Publish Python distribution to TestPyPI
+
+on:
+  workflow_dispatch: # Run this workflow manually from the Actions tab
+
+jobs:
+  validate-tag-name:
+    name: Validate Git Tag
+    # Only run this workflow on tagged commits
+    # - The branch should be tagged with 'v' prefix, e.g. 'v1.0.0'
+    # - The tag will be used as the version of the package
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check tag name format
+      run: |
+        if [[ ! "${{ github.ref_name }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          echo "Error: Invalid tag name format '${{ github.ref_name }}'. Expected 'vX.X.X'"
+          exit 1
+        fi
+
+  build:
+    name: Build Distribution
+    needs:
+    - validate-tag-name
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - name: Set up Python
+      uses: actions/setup-python@v6
+      with:
+        python-version: '3.13'
+    - name: Install pypa/build
+      run: python3 -m pip install build --user
+    - name: Set version number from tag
+      run: echo '${{ github.ref_name }}' | sed 's/^v//' > VERSION
+    - name: Build a binary wheel and a source tarball
+      run: python3 -m build
+    - name: Store the distribution packages
+      uses: actions/upload-artifact@v6
+      with:
+        name: python-package-distributions
+        path: dist/
+
+  publish-to-testpypi:
+    name: Publish to TestPyPI
+    needs:
+    - build
+    runs-on: ubuntu-latest
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/life-model
+    permissions:
+      id-token: write # IMPORTANT: mandatory for trusted publishing
+    steps:
+    - name: Download all the dists
+      uses: actions/download-artifact@v7
+      with:
+        name: python-package-distributions
+        path: dist/
+    - name: Publish distribution to TestPyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        repository-url: https://test.pypi.org/legacy/

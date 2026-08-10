@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+*.env
+*api*.txt
+*.key
+eval/gate_eval_results.jsonl
+eval/audit_*.jsonl
+eval/figs_out/

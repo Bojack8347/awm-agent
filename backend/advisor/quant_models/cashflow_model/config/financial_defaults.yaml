@@ -1,0 +1,533 @@
+# Copyright 2025 Spencer Williams
+#
+# Use of this source code is governed by an MIT license:
+# https://github.com/sw23/life-model/blob/main/LICENSE
+
+# Default financial configuration values for life-model
+# Official source ledger: docs/financial_defaults_sources.rst
+
+economy:
+  # 2026 SSA COLA based on CPI-W; used as the default recurring expense inflation proxy.
+  inflation_rate: 2.8  # percentage
+
+employment:
+  salary:
+    # AWM planning assumption used only when the client does not provide income growth.
+    default_yearly_increase: 3.0  # percentage
+
+tax:
+  federal:
+    # 2026 tax year; IRS IR-2025-103 / Rev. Proc. 2025-32.
+    standard_deduction:
+      single: 16100
+      married_filing_jointly: 32200
+    tax_brackets:
+      single:
+        - [0, 12400, 10]
+        - [12400, 50400, 12]
+        - [50400, 105700, 22]
+        - [105700, 201775, 24]
+        - [201775, 256225, 32]
+        - [256225, 640600, 35]
+        - [640600, .inf, 37]
+      married_filing_jointly:
+        - [0, 24800, 10]
+        - [24800, 100800, 12]
+        - [100800, 211400, 22]
+        - [211400, 403550, 24]
+        - [403550, 512450, 32]
+        - [512450, 768700, 35]
+        - [768700, .inf, 37]
+    # IRC §86 provisional-income thresholds for taxing Social Security
+    # benefits. Fixed by statute since 1984/1993; not inflation indexed.
+    social_security_taxation_thresholds:
+      single:
+        base: 25000
+        second: 34000
+      married_filing_jointly:
+        base: 32000
+        second: 44000
+    # IRC §121 exclusion of gain on the sale of a primary residence
+    home_sale_exclusion:
+      single: 250000
+      married_filing_jointly: 500000
+  state:
+    jurisdiction: NY
+    tax_year: 2025
+    standard_deduction:
+      single: 8000
+      married_filing_jointly: 16050
+    tax_table:
+      agi_not_over: 107650
+      taxable_income_less_than: 65000
+    tax_brackets:
+      single:
+        - [0, 8500, 4.0]
+        - [8500, 11700, 4.5]
+        - [11700, 13900, 5.25]
+        - [13900, 80650, 5.5]
+        - [80650, 215400, 6.0]
+        - [215400, 1077550, 6.85]
+        - [1077550, 5000000, 9.65]
+        - [5000000, 25000000, 10.3]
+        - [25000000, .inf, 10.9]
+      married_filing_jointly:
+        - [0, 17150, 4.0]
+        - [17150, 23600, 4.5]
+        - [23600, 27900, 5.25]
+        - [27900, 161550, 5.5]
+        - [161550, 323200, 6.0]
+        - [323200, 2155350, 6.85]
+        - [2155350, 5000000, 9.65]
+        - [5000000, 25000000, 10.3]
+        - [25000000, .inf, 10.9]
+    high_income_tax_computation:
+      single:
+        agi_threshold: 107650
+        phase_in_end: 157650
+        low_income_recapture:
+          taxable_income_not_over: 215400
+          rate: 6.0
+        recapture_segments:
+          # [taxable income over, taxable income not over, recapture base, incremental benefit, AGI excess over]
+          - [215400, 1077550, 568, 1831, 215400]
+          - [1077550, 5000000, 2399, 30172, 1077550]
+          - [5000000, 25000000, 32571, 32500, 5000000]
+        final_flat_rate:
+          agi_over: 25000000
+          rate: 10.9
+      married_filing_jointly:
+        agi_threshold: 107650
+        phase_in_end: 157650
+        low_income_recapture:
+          taxable_income_not_over: 161550
+          rate: 5.5
+        recapture_segments:
+          # [taxable income over, taxable income not over, recapture base, incremental benefit, AGI excess over]
+          - [161550, 323200, 333, 807, 161550]
+          - [323200, 2155350, 1140, 2747, 323200]
+          - [2155350, 5000000, 3887, 60350, 2155350]
+          - [5000000, 25000000, 64237, 32500, 5000000]
+        final_flat_rate:
+          agi_over: 25000000
+          rate: 10.9
+  trust:
+    # Non-grantor trust brackets compress to the top rate within ~$15k of
+    # income, so undistributed irrevocable-trust income is taxed flat.
+    flat_tax_rate: 37.0  # percentage
+  fica:
+    social_security_rate: 6.2  # percentage
+    social_security_max_income: 184500
+    medicare_rate: 1.45  # percentage
+    medicare_additional_rate: 0.9  # percentage
+    medicare_additional_rate_threshold:
+      single: 200000
+      married_filing_jointly: 250000
+
+retirement:
+  federal_retirement_age: 59.5
+  # IRC §72(t) additional tax on pre-tax retirement withdrawals taken
+  # before the federal retirement age.
+  early_withdrawal_penalty_rate: 10.0  # percentage
+  job_401k_contrib_limit:
+    # 2026 section 402(g) elective deferral limit.
+    base: 24500
+    catch_up_age: 50
+    catch_up_amount: 8000
+    super_catch_up_start_age: 60
+    super_catch_up_end_age: 63
+    super_catch_up_amount: 11250
+  ira:
+    # 2026 combined traditional/Roth IRA base limit; age 50+ catch-up is 1100.
+    contribution_limit: 7500
+    catch_up_age: 50
+    catch_up_amount: 1100
+    default_growth_rate: 7.0  # percentage
+  rmd_distribution_periods:
+    # IRS Pub. 590-B Table III, starting at the current general RMD age 73.
+    - [73, 26.5]
+    - [74, 25.5]
+    - [75, 24.6]
+    - [76, 23.7]
+    - [77, 22.9]
+    - [78, 22.0]
+    - [79, 21.1]
+    - [80, 20.2]
+    - [81, 19.4]
+    - [82, 18.5]
+    - [83, 17.7]
+    - [84, 16.8]
+    - [85, 16.0]
+    - [86, 15.2]
+    - [87, 14.4]
+    - [88, 13.7]
+    - [89, 12.9]
+    - [90, 12.2]
+    - [91, 11.5]
+    - [92, 10.8]
+    - [93, 10.1]
+    - [94, 9.5]
+    - [95, 8.9]
+    - [96, 8.4]
+    - [97, 7.8]
+    - [98, 7.3]
+    - [99, 6.8]
+    - [100, 6.4]
+    - [101, 6.0]
+    - [102, 5.6]
+    - [103, 5.2]
+    - [104, 4.9]
+    - [105, 4.6]
+    - [106, 4.3]
+    - [107, 4.1]
+    - [108, 3.9]
+    - [109, 3.7]
+    - [110, 3.5]
+    - [111, 3.4]
+    - [112, 3.3]
+    - [113, 3.1]
+    - [114, 3.0]
+    - [115, 2.9]
+    - [116, 2.8]
+    - [117, 2.7]
+    - [118, 2.5]
+    - [119, 2.3]
+    - [120, 2.0]
+
+social_security:
+  min_eligible_credits: 40
+  max_credits_per_year: 4
+  max_years_of_income: 35
+  min_early_retirement_age: 62
+  normal_retirement_age: 67
+  max_delayed_retirement_credit_age: 70
+  delayed_retirement_credit: 8.0  # percentage
+
+  # QC amount calculation base values
+  qc_credit_amount_1978: 250.0
+  qc_avg_wage_index_1976: 9226.48
+
+  # Configuration for extrapolation beyond available data
+  last_avg_wage_index_year: 2024
+  last_avg_wage_index_increase: 4.84
+  last_cost_of_living_adj_year: 2025
+  last_bend_points_year: 2026
+
+  # Average Wage Index Series
+  # https://www.ssa.gov/OACT/COLA/awiseries.html
+  avg_wage_index:
+    1951: 2799.16
+    1952: 2973.32
+    1953: 3139.44
+    1954: 3155.64
+    1955: 3301.44
+    1956: 3532.36
+    1957: 3641.72
+    1958: 3673.80
+    1959: 3855.80
+    1960: 4007.12
+    1961: 4086.76
+    1962: 4291.40
+    1963: 4396.64
+    1964: 4576.32
+    1965: 4658.72
+    1966: 4938.36
+    1967: 5213.44
+    1968: 5571.76
+    1969: 5893.76
+    1970: 6186.24
+    1971: 6497.08
+    1972: 7133.80
+    1973: 7580.16
+    1974: 8030.76
+    1975: 8630.92
+    1976: 9226.48
+    1977: 9779.44
+    1978: 10556.03
+    1979: 11479.46
+    1980: 12513.46
+    1981: 13773.10
+    1982: 14531.34
+    1983: 15239.24
+    1984: 16135.07
+    1985: 16822.51
+    1986: 17321.82
+    1987: 18426.51
+    1988: 19334.04
+    1989: 20099.55
+    1990: 21027.98
+    1991: 21811.60
+    1992: 22935.42
+    1993: 23132.67
+    1994: 23753.53
+    1995: 24705.66
+    1996: 25913.90
+    1997: 27426.00
+    1998: 28861.44
+    1999: 30469.84
+    2000: 32154.82
+    2001: 32921.92
+    2002: 33252.09
+    2003: 34064.95
+    2004: 35648.55
+    2005: 36952.94
+    2006: 38651.41
+    2007: 40405.48
+    2008: 41334.97
+    2009: 40711.61
+    2010: 41673.83
+    2011: 42979.61
+    2012: 44321.67
+    2013: 44888.16
+    2014: 46481.52
+    2015: 48098.63
+    2016: 48642.15
+    2017: 50321.89
+    2018: 52145.80
+    2019: 54099.99
+    2020: 55628.60
+    2021: 60575.07
+    2022: 63795.13
+    2023: 66621.80
+    2024: 69846.57
+
+  # Cost of Living Adjustments (COLA) for each year, as a percentage
+  # https://www.ssa.gov/oact/COLA/colaseries.html
+  cost_of_living_adj:
+    1975: 8.0
+    1976: 6.4
+    1977: 5.9
+    1978: 6.5
+    1979: 9.9
+    1980: 14.3
+    1981: 11.2
+    1982: 7.4
+    1983: 3.5
+    1984: 3.5
+    1985: 3.1
+    1986: 1.3
+    1987: 4.2
+    1988: 4.0
+    1989: 4.7
+    1990: 5.4
+    1991: 3.7
+    1992: 3.0
+    1993: 2.6
+    1994: 2.8
+    1995: 2.6
+    1996: 2.9
+    1997: 2.1
+    1998: 1.3
+    1999: 2.5
+    2000: 3.5
+    2001: 2.6
+    2002: 1.4
+    2003: 2.1
+    2004: 2.7
+    2005: 4.1
+    2006: 3.3
+    2007: 2.3
+    2008: 5.8
+    2009: 0.0
+    2010: 0.0
+    2011: 3.6
+    2012: 1.7
+    2013: 1.5
+    2014: 1.7
+    2015: 0.0
+    2016: 0.3
+    2017: 2.0
+    2018: 2.8
+    2019: 1.6
+    2020: 1.3
+    2021: 5.9
+    2022: 8.7
+    2023: 3.2
+    2024: 2.5
+    2025: 2.8
+
+  # Bend Points used to calculate the Primary Insurance Amount (PIA)
+  # https://www.ssa.gov/oact/COLA/bendpoints.html
+  # Format: [first_bend_point, second_bend_point]
+  bend_points:
+    1979: [180, 1085]
+    1980: [194, 1171]
+    1981: [211, 1274]
+    1982: [230, 1388]
+    1983: [254, 1528]
+    1984: [267, 1612]
+    1985: [280, 1691]
+    1986: [297, 1790]
+    1987: [310, 1866]
+    1988: [319, 1922]
+    1989: [339, 2044]
+    1990: [356, 2145]
+    1991: [370, 2230]
+    1992: [387, 2333]
+    1993: [401, 2420]
+    1994: [422, 2545]
+    1995: [426, 2567]
+    1996: [437, 2635]
+    1997: [455, 2741]
+    1998: [477, 2875]
+    1999: [505, 3043]
+    2000: [531, 3202]
+    2001: [561, 3381]
+    2002: [592, 3567]
+    2003: [606, 3653]
+    2004: [612, 3689]
+    2005: [627, 3779]
+    2006: [656, 3955]
+    2007: [680, 4100]
+    2008: [711, 4288]
+    2009: [744, 4483]
+    2010: [761, 4586]
+    2011: [749, 4517]
+    2012: [767, 4624]
+    2013: [791, 4768]
+    2014: [816, 4917]
+    2015: [826, 4980]
+    2016: [856, 5157]
+    2017: [885, 5336]
+    2018: [895, 5397]
+    2019: [926, 5583]
+    2020: [960, 5785]
+    2021: [996, 6002]
+    2022: [1024, 6172]
+    2023: [1115, 6721]
+    2024: [1174, 7078]
+    2025: [1226, 7391]
+    2026: [1286, 7749]
+
+accounts:
+  bank:
+    default_interest_rate: 0.0
+    compound_rate: 12  # monthly compounding
+  brokerage:
+    default_growth_rate: 7.0  # percentage
+  hsa:
+    # 2026 self-only HSA contribution limit; family coverage limit is 8750.
+    contribution_limit: 4400
+    default_employer_contribution: 0
+  plan_529:
+    annual_contribution_limit: 19000  # per beneficiary (2026 annual gift tax exclusion)
+    lifetime_contribution_limit: 500000  # typical state limit
+    default_growth_rate: 7.0  # percentage
+    qualified_expense_penalty: 10.0  # percentage penalty on earnings for non-qualified withdrawals
+
+# Estimate-grade planning assumptions for an existing mortgage when AWM has a
+# confirmed balance but no other loan or property details. Client-supplied
+# values always override these defaults, and the AWM bridge discloses each
+# effective value in resolved_assumptions.
+housing:
+  opening_mortgage_defaults:
+    # Use the mortgage balance as a conservative property-value proxy so the
+    # model does not invent opening home equity.
+    home_value_to_mortgage_balance_multiple: 1.0
+    home_appreciation_rate: 3.0  # percentage
+    interest_rate: 6.5  # percentage
+    remaining_term_years: 30
+    mortgage_type: fixed_rate
+    # Household spending normally includes housing; this also avoids adding a
+    # second mortgage payment to a confirmed all-in spending total.
+    annual_spending_includes_mortgage: true
+
+# Monte Carlo market assumptions per asset class. Expected returns and
+# volatilities are annual percentages; market_beta drives the cross-asset
+# correlation matrix (corr[i][j] = beta_i * beta_j). Economic scenario files
+# can override any subset of assets or fields.
+market_assumptions:
+  asset_classes:
+    "Cash":
+      expected_return: 2.0
+      volatility: 1.0
+      market_beta: 0.05
+    "US Treasury":
+      expected_return: 3.5
+      volatility: 5.0
+      market_beta: 0.15
+    "Global Investment Grade Corporate Bond":
+      expected_return: 4.5
+      volatility: 7.0
+      market_beta: 0.25
+    "Global High Yield Bond BB-B":
+      expected_return: 6.5
+      volatility: 12.0
+      market_beta: 0.40
+    "Emerging Market Local Currency Government Bonds":
+      expected_return: 7.0
+      volatility: 14.0
+      market_beta: 0.45
+    "Emerging Market Hard Currency Debt":
+      expected_return: 6.5
+      volatility: 13.0
+      market_beta: 0.45
+    "US Equity":
+      expected_return: 9.0
+      volatility: 18.0
+      market_beta: 0.65
+    "Dev. Europe ex UK Equity":
+      expected_return: 8.0
+      volatility: 20.0
+      market_beta: 0.68
+    "Japan Equity":
+      expected_return: 7.5
+      volatility: 20.0
+      market_beta: 0.66
+    "China Equity":
+      expected_return: 10.0
+      volatility: 28.0
+      market_beta: 0.72
+    "India Equity":
+      expected_return: 11.0
+      volatility: 26.0
+      market_beta: 0.72
+    "Commodities":
+      expected_return: 5.0
+      volatility: 18.0
+      market_beta: 0.35
+    "Gold":
+      expected_return: 4.0
+      volatility: 16.0
+      market_beta: 0.15
+    "Hedge Funds":
+      expected_return: 6.0
+      volatility: 10.0
+      market_beta: 0.45
+    "Bitcoin":
+      expected_return: 15.0
+      volatility: 70.0
+      market_beta: 0.35
+
+healthcare:
+  # Healthcare cost trend historically runs above general inflation.
+  cost_inflation_rate: 5.0  # percentage
+  # Base yearly out-of-pocket medical cost before age multipliers.
+  annual_out_of_pocket: 5500
+  medicare_start_age: 65
+  # 2026 standard Medicare premiums (Part B per CMS; D and Medigap typical).
+  medicare_part_b_monthly_premium: 206.50
+  medicare_part_d_monthly_premium: 46.50
+  medigap_monthly_premium: 155.0
+  # Private nursing-home room runs ~130k/yr in 2026 dollars.
+  long_term_care_annual_cost: 130000
+  # Out-of-pocket multiplier applied from each age threshold upward.
+  age_cost_multipliers:
+    50: 1.2
+    60: 1.5
+    70: 2.0
+    80: 2.6
+
+insurance:
+  life:
+    default_loan_interest_rate: 6.0  # percentage
+    default_cash_value_growth_rate: 0.0
+    default_max_missed_payments: 3
+    surrender_percentages:
+      early: 0.5  # less than 3 years
+      standard: 0.8  # 3+ years
+
+debt:
+  credit_card:
+    default_interest_rate: 18.0  # percentage
+    default_minimum_payment_percent: 2.0  # percentage

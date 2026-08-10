@@ -1,0 +1,20 @@
+---
+key: activation_mutation
+name: AWM Activation Mutation Deriver
+description: Derives and validates knowledge mutations from an activated policy.
+module: advisor.tasks.activation_mutation.mutator
+entrypoint: ActivationMutator.derive_and_validate
+default_model: gpt-5.6-luna
+reasoning_effort: none
+temperature: null
+fallback_models: []
+timeout_seconds: 90
+allowed_callers:
+  - activation
+side_effect_level: writes_profile
+execution: wait
+idempotent: false
+max_runtime_seconds: 120
+---
+
+Follow the activation-mutation task system instructions and return only its declared structured output.

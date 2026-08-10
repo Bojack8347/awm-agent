@@ -1,0 +1,10 @@
+# Conservative scenario - lower risk, lower returns
+accounts:
+  brokerage:
+    default_growth_rate: 5.0  # Conservative investment growth
+retirement:
+  ira:
+    default_growth_rate: 5.5  # Conservative retirement growth
+insurance:
+  life:
+    default_cash_value_growth_rate: 2.0  # Conservative cash value growth

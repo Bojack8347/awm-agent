@@ -1,0 +1,267 @@
+{
+  "schema_version": "awm.variable_source_policy.v1",
+  "policy_id": "awm-variable-sources-2026-08-04",
+  "policy_version": 3,
+  "effective_date": "2026-08-04",
+  "enforcement_mode": "observe_only",
+  "source_aliases": {
+    "committed_facts": "confirmed_client_fact",
+    "structured_facts": "structured_client_fact",
+    "draft_facts": "unconfirmed_draft_fact",
+    "cashflow_state_accounts": "cashflow_state",
+    "cashflow_state_housing": "cashflow_state",
+    "explicit_scenario_change": "current_user_input"
+  },
+  "groups": [
+    {
+      "variable_keys": [
+        "current_age",
+        "spouse_age",
+        "marital_status",
+        "retirement_age",
+        "annual_income",
+        "annual_spending",
+        "retirement_contribution_pct",
+        "monthly_retirement_contribution",
+        "cash_balance",
+        "brokerage_balance",
+        "retirement_balance",
+        "education_balance",
+        "mortgage_balance",
+        "home_tax_basis",
+        "mortgage_monthly_payment",
+        "education_goal_amount",
+        "education_horizon_years"
+      ],
+      "source_class": "client_specific",
+      "allowed_sources": [
+        "confirmed_client_fact",
+        "structured_client_fact",
+        "unconfirmed_draft_fact",
+        "cashflow_state",
+        "linked_account",
+        "current_user_input"
+      ],
+      "online_research_allowed": false,
+      "default_allowed": false,
+      "client_authorization_required": false,
+      "approval_required": false,
+      "maximum_age_days": null,
+      "allowed_uses": [
+        "reporting",
+        "model_input",
+        "recommendation"
+      ],
+      "missing_behavior": "ask_client",
+      "notes": "Private household facts cannot be replaced by public web results. Existing draft-fact and recommendation guards remain authoritative."
+    },
+    {
+      "variable_keys": [
+        "home_value",
+        "mortgage_interest_rate",
+        "mortgage_remaining_term_years",
+        "mortgage_type",
+        "annual_spending_includes_mortgage"
+      ],
+      "source_class": "client_specific",
+      "allowed_sources": [
+        "confirmed_client_fact",
+        "structured_client_fact",
+        "unconfirmed_draft_fact",
+        "cashflow_state",
+        "linked_property_or_loan_record",
+        "current_user_input",
+        "client_authorized_configured_default"
+      ],
+      "online_research_allowed": false,
+      "default_allowed": true,
+      "client_authorization_required": true,
+      "approval_required": true,
+      "maximum_age_days": null,
+      "allowed_uses": [
+        "reporting",
+        "model_input"
+      ],
+      "missing_behavior": "ask_client",
+      "notes": "A public market average is not the client's loan term or home value. Existing explicit mortgage-default authorization remains required."
+    },
+    {
+      "variable_keys": [
+        "home_appreciation_rate",
+        "life_expectancy"
+      ],
+      "source_class": "governed_planning_assumption",
+      "allowed_sources": [
+        "confirmed_client_fact",
+        "structured_client_fact",
+        "unconfirmed_draft_fact",
+        "cashflow_state",
+        "current_user_input",
+        "approved_assumption_registry",
+        "approved_actuarial_table",
+        "client_authorized_configured_default"
+      ],
+      "online_research_allowed": false,
+      "default_allowed": true,
+      "client_authorization_required": true,
+      "approval_required": true,
+      "maximum_age_days": 1095,
+      "allowed_uses": [
+        "reporting",
+        "model_input"
+      ],
+      "missing_behavior": "use_approved_scenarios",
+      "notes": "Use a disclosed approved assumption or scenario range, never an agent-selected point estimate."
+    },
+    {
+      "variable_keys": [
+        "emergency_reserve_months"
+      ],
+      "source_class": "deterministically_derived",
+      "allowed_sources": [
+        "confirmed_client_fact",
+        "structured_client_fact",
+        "unconfirmed_draft_fact",
+        "cashflow_state",
+        "current_user_input",
+        "deterministic_derivation"
+      ],
+      "online_research_allowed": false,
+      "default_allowed": false,
+      "client_authorization_required": false,
+      "approval_required": false,
+      "maximum_age_days": null,
+      "allowed_uses": [
+        "reporting",
+        "model_input",
+        "recommendation"
+      ],
+      "missing_behavior": "derive_deterministically",
+      "notes": "Derive only when reserve amount and recurring spending are both grounded."
+    },
+    {
+      "variable_keys": [
+        "starting_assets"
+      ],
+      "source_class": "deterministically_derived",
+      "allowed_sources": [
+        "deterministic_derivation"
+      ],
+      "online_research_allowed": false,
+      "default_allowed": false,
+      "client_authorization_required": false,
+      "approval_required": false,
+      "maximum_age_days": null,
+      "allowed_uses": [
+        "reporting",
+        "model_input",
+        "recommendation"
+      ],
+      "missing_behavior": "ask_client",
+      "notes": "The total may be derived only from grounded cash and investment balances."
+    },
+    {
+      "variable_keys": [
+        "federal_standard_deduction",
+        "federal_tax_brackets",
+        "retirement_contribution_limits",
+        "social_security_cola",
+        "social_security_taxable_maximum",
+        "medicare_part_b_premium"
+      ],
+      "source_class": "public_authoritative",
+      "allowed_sources": [
+        "approved_assumption_registry",
+        "authoritative_government_source"
+      ],
+      "online_research_allowed": true,
+      "default_allowed": true,
+      "client_authorization_required": false,
+      "approval_required": true,
+      "session_use_allowed": true,
+      "automatic_promotion_allowed": true,
+      "maximum_age_days": 400,
+      "allowed_uses": [
+        "reporting",
+        "model_input",
+        "recommendation"
+      ],
+      "missing_behavior": "stop",
+      "notes": "The Financial Planning agent may request one supported public fact for server-validated session reporting or local calculation. A matching server-owned authoritative snapshot may satisfy durable activation automatically; otherwise the fact remains session-only. The Research Specialist receives no Client File data."
+    },
+    {
+      "variable_keys": [
+        "new_york_tax_brackets",
+        "new_york_standard_deduction"
+      ],
+      "source_class": "public_authoritative",
+      "allowed_sources": [
+        "approved_assumption_registry",
+        "authoritative_government_source"
+      ],
+      "online_research_allowed": true,
+      "default_allowed": true,
+      "client_authorization_required": false,
+      "approval_required": true,
+      "session_use_allowed": true,
+      "automatic_promotion_allowed": false,
+      "maximum_age_days": 400,
+      "allowed_uses": [
+        "reporting",
+        "model_input",
+        "recommendation"
+      ],
+      "missing_behavior": "stop",
+      "notes": "No independent server verifier is registered, so these variables cannot be promoted automatically."
+    },
+    {
+      "variable_keys": [
+        "inflation_rate",
+        "salary_growth_rate",
+        "healthcare_cost_inflation",
+        "long_term_care_cost",
+        "mortgage_market_assumption"
+      ],
+      "source_class": "governed_planning_assumption",
+      "allowed_sources": [
+        "approved_assumption_registry",
+        "authoritative_government_source",
+        "approved_research_source"
+      ],
+      "online_research_allowed": true,
+      "default_allowed": true,
+      "client_authorization_required": false,
+      "approval_required": true,
+      "maximum_age_days": 730,
+      "allowed_uses": [
+        "reporting",
+        "model_input"
+      ],
+      "missing_behavior": "use_approved_scenarios",
+      "notes": "Observed public data may inform calibration, but it does not become a client fact or recommendation-grade input automatically."
+    },
+    {
+      "variable_keys": [
+        "market_expected_returns",
+        "market_volatilities",
+        "market_correlations"
+      ],
+      "source_class": "governed_planning_assumption",
+      "allowed_sources": [
+        "approved_assumption_registry",
+        "approved_capital_market_assumption_set"
+      ],
+      "online_research_allowed": false,
+      "default_allowed": true,
+      "client_authorization_required": false,
+      "approval_required": true,
+      "maximum_age_days": 1095,
+      "allowed_uses": [
+        "reporting",
+        "model_input"
+      ],
+      "missing_behavior": "use_approved_scenarios",
+      "notes": "Per-turn web search cannot select expected returns, volatility, or correlations."
+    }
+  ]
+}

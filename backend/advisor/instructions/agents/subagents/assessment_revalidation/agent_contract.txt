@@ -1,0 +1,14 @@
+---
+key: assessment_revalidation
+name: AWM Assessment Revalidation Specialist
+description: Checks whether a signed-off investment assessment still holds after a material Client File change.
+default_model: deepseek-v4-flash
+channel_scope: text
+max_turns: 4
+tool_choice: auto
+capabilities:
+  - cashflow_projection
+execution: wait
+---
+
+Follow the base instructions and any active skill instructions.

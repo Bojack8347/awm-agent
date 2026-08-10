@@ -1,0 +1,362 @@
+{
+  "template_name": "Cashflow Agent Scenario Template",
+  "template_version": 1,
+  "description": "Runnable CLI scenario showing all event categories currently accepted by the cashflow model CLI.",
+  "accepted_cli_event_types": [
+    "one_time_expense",
+    "one_time_income",
+    "marriage",
+    "divorce",
+    "child_birth_or_adoption",
+    "home_purchase",
+    "go_to_college"
+  ],
+  "accepted_financial_decision_event_names": [
+    "Marriage",
+    "Divorce",
+    "Child birth/adoption",
+    "Home purchase",
+    "Go to college",
+    "One-time expense",
+    "One-time income"
+  ],
+  "accepted_asset_classes": [
+    "Cash",
+    "US Treasury",
+    "Global Investment Grade Corporate Bond",
+    "Global High Yield Bond BB-B",
+    "Emerging Market Local Currency Government Bonds",
+    "Emerging Market Hard Currency Debt",
+    "US Equity",
+    "Dev. Europe ex UK Equity",
+    "Japan Equity",
+    "China Equity",
+    "India Equity",
+    "Commodities",
+    "Gold",
+    "Hedge Funds",
+    "Bitcoin"
+  ],
+  "start_year": 2026,
+  "end_year": 2076,
+  "family_name": "Agent Cashflow Scenario",
+  "married_couples": [],
+  "people": [
+    {
+      "id": "primary",
+      "name": "Alex",
+      "age": 35,
+      "retirement_age": 65,
+      "state": "NY",
+      "spending": {
+        "base": 60000,
+        "yearly_increase": 2.5
+      },
+      "bank_accounts": [
+        {
+          "company": "Primary Bank",
+          "type": "Checking",
+          "balance": 50000,
+          "interest_rate": 1.0
+        },
+        {
+          "company": "Primary Bank",
+          "type": "Savings",
+          "balance": 25000,
+          "interest_rate": 2.0
+        }
+      ],
+      "apartments": [
+        {
+          "name": "Initial Rental",
+          "monthly_rent": 2500,
+          "yearly_increase": 2.5
+        }
+      ],
+      "jobs": [
+        {
+          "id": "primary_job",
+          "company": "Primary Employer",
+          "role": "Professional",
+          "salary": {
+            "base": 120000,
+            "yearly_increase": 3.0,
+            "yearly_bonus": 5.0
+          },
+          "401k": {
+            "pretax_balance": 150000,
+            "pretax_contrib_percent": 10,
+            "roth_balance": 20000,
+            "roth_contrib_percent": 2,
+            "average_growth": 5.0,
+            "company_match_percent": 4,
+            "asset_allocation": [
+              {
+                "asset": "US Equity",
+                "weight": 70
+              },
+              {
+                "asset": "US Treasury",
+                "weight": 30
+              }
+            ],
+            "asset_return_rates": [
+              {
+                "asset": "US Equity",
+                "return_rate": 10.0
+              },
+              {
+                "asset": "US Treasury",
+                "return_rate": 4.0
+              }
+            ]
+          }
+        }
+      ],
+      "investment_returns": [
+        {
+          "balance": 100000,
+          "growth_rate": 0,
+          "asset_allocation": [
+            {
+              "asset": "US Equity",
+              "weight": 60
+            },
+            {
+              "asset": "US Treasury",
+              "weight": 30
+            },
+            {
+              "asset": "Gold",
+              "weight": 10
+            }
+          ],
+          "asset_return_rates": [
+            {
+              "asset": "US Equity",
+              "return_rate": 10.0
+            },
+            {
+              "asset": "US Treasury",
+              "return_rate": 4.0
+            },
+            {
+              "asset": "Gold",
+              "return_rate": 5.0
+            }
+          ],
+          "payout_to_bank": true,
+          "cash_payout_rate": 50,
+          "taxable": true
+        }
+      ],
+      "children": [
+        {
+          "name": "Existing Child",
+          "birth_year": 2020,
+          "birth_adoption_cost": 0,
+          "childcare_annual_cost": 12000,
+          "school_activity_annual_cost": 3000,
+          "college_annual_cost": 25000,
+          "annual_529_contribution": 6000,
+          "childcare_start_age": 0,
+          "childcare_end_age": 5,
+          "school_start_age": 6,
+          "school_end_age": 17,
+          "college_start_age": 18,
+          "college_end_age": 21,
+          "contribution_start_age": 0,
+          "contribution_end_age": 18,
+          "independence_age": 22,
+          "yearly_increase": 2.5,
+          "child_income": 35000,
+          "child_income_start_age": 22,
+          "child_income_end_age": 26,
+          "child_income_yearly_increase": 2.0,
+          "family_contribution_percent": 20,
+          "plan529": {
+            "balance": 40000,
+            "state": "NY",
+            "growth_rate": 5.0,
+            "annual_contribution_limit": 19000,
+            "lifetime_contribution_limit": 500000,
+            "asset_allocation": [
+              {
+                "asset": "US Equity",
+                "weight": 70
+              },
+              {
+                "asset": "US Treasury",
+                "weight": 30
+              }
+            ],
+            "asset_return_rates": [
+              {
+                "asset": "US Equity",
+                "return_rate": 10.0
+              },
+              {
+                "asset": "US Treasury",
+                "return_rate": 4.0
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "type": "one_time_expense",
+      "year": 2028,
+      "person": "primary",
+      "name": "Emergency expense",
+      "amount": 15000
+    },
+    {
+      "type": "one_time_income",
+      "year": 2029,
+      "person": "primary",
+      "name": "Signing bonus",
+      "amount": 5000,
+      "taxable": true
+    },
+    {
+      "type": "marriage",
+      "year": 2030,
+      "person": "primary",
+      "spouse": {
+        "id": "spouse",
+        "name": "Jordan",
+        "age": 34,
+        "retirement_age": 65,
+        "state": "NY",
+        "spending": {
+          "base": 35000,
+          "yearly_increase": 2.5
+        },
+        "bank_accounts": [
+          {
+            "company": "Spouse Bank",
+            "type": "Checking",
+            "balance": 20000,
+            "interest_rate": 1.0
+          }
+        ],
+        "jobs": [
+          {
+            "id": "spouse_job",
+            "company": "Spouse Employer",
+            "role": "Manager",
+            "salary": {
+              "base": 90000,
+              "yearly_increase": 2.5,
+              "yearly_bonus": 0
+            },
+            "401k": {
+              "pretax_balance": 75000,
+              "pretax_contrib_percent": 8,
+              "roth_balance": 0,
+              "roth_contrib_percent": 0,
+              "average_growth": 4.0,
+              "company_match_percent": 3
+            }
+          }
+        ],
+        "investment_returns": [
+          {
+            "balance": 50000,
+            "growth_rate": 6.0,
+            "payout_to_bank": false,
+            "cash_payout_rate": 0,
+            "taxable": true
+          }
+        ]
+      }
+    },
+    {
+      "type": "child_birth_or_adoption",
+      "year": 2032,
+      "person": "primary",
+      "name": "New Child",
+      "birth_adoption_cost": 5000,
+      "childcare_annual_cost": 14000,
+      "school_activity_annual_cost": 3500,
+      "college_annual_cost": 30000,
+      "annual_529_contribution": 6000,
+      "childcare_start_age": 0,
+      "childcare_end_age": 5,
+      "school_start_age": 6,
+      "school_end_age": 17,
+      "college_start_age": 18,
+      "college_end_age": 21,
+      "contribution_start_age": 0,
+      "contribution_end_age": 18,
+      "independence_age": 22,
+      "yearly_increase": 2.5,
+      "child_income": 30000,
+      "child_income_start_age": 22,
+      "child_income_end_age": 26,
+      "child_income_yearly_increase": 2.0,
+      "family_contribution_percent": 20
+    },
+    {
+      "type": "home_purchase",
+      "year": 2035,
+      "person": "primary",
+      "name": "Primary Home",
+      "purchase_price": 700000,
+      "down_payment": 140000,
+      "closing_costs": 18000,
+      "mortgage_years": 30,
+      "mortgage_rate": 5.5,
+      "property_tax_percent": 1.2,
+      "home_insurance_percent": 0.4,
+      "maintenance_amount": 8000,
+      "maintenance_increase": 2.5,
+      "improvement_amount": 2000,
+      "improvement_increase": 2.5,
+      "hoa_amount": 0,
+      "hoa_increase": 0,
+      "value_yearly_increase": 3.0,
+      "stop_renting": true
+    },
+    {
+      "type": "go_to_college",
+      "year": 2040,
+      "person": "primary",
+      "annual_cost": 12000,
+      "years": 2,
+      "cost_yearly_increase": 2.5,
+      "defer_income": false,
+      "post_college_salary": null,
+      "finance_with_student_loan": true,
+      "loan_interest_rate": 6.5,
+      "loan_term_years": 10,
+      "loan_type": "federal_unsubsidized",
+      "school_name": "Evening Program"
+    },
+    {
+      "type": "divorce",
+      "year": 2045,
+      "person": "primary",
+      "spouse": "spouse"
+    }
+  ],
+  "market_assumptions": {
+    "asset_classes": {
+      "US Equity": {
+        "expected_return": 8.5,
+        "volatility": 19.0
+      }
+    },
+    "yearly": {
+      "2042": {
+        "US Equity": {
+          "expected_return": -20.0,
+          "volatility": 30.0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+# High inflation scenario - Protect against purchasing power erosion
+economy:
+  inflation_rate: 6.0
+accounts:
+  bank:
+    default_interest_rate: 5.0  # Higher nominal rates
+  brokerage:
+    default_growth_rate: 5.0  # Lower real returns
+debt:
+  credit_card:
+    default_interest_rate: 25.0  # Higher borrowing costs
+insurance:
+  life:
+    default_loan_interest_rate: 8.0  # Higher loan rates

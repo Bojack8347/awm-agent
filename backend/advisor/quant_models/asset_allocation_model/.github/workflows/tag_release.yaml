@@ -1,0 +1,161 @@
+name: Deploy to Google Cloud Run
+
+on:
+  push:
+    tags:
+      - 'dev-*'
+      - 'staging-*'
+      - 'prod-*'
+
+jobs:
+  # Determine environment from tag
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      environment: ${{ steps.extract-env.outputs.environment }}
+      tag: ${{ steps.extract-env.outputs.tag }}
+    steps:
+      - name: Extract environment from tag
+        id: extract-env
+        run: |
+          TAG_NAME="${GITHUB_REF#refs/tags/}"
+          echo "Full tag: $TAG_NAME"
+          
+          # Extract environment prefix (everything before the first hyphen)
+          ENVIRONMENT=$(echo "$TAG_NAME" | cut -d'-' -f1)
+          echo "environment=$ENVIRONMENT" >> $GITHUB_OUTPUT
+          echo "tag=$TAG_NAME" >> $GITHUB_OUTPUT
+          echo "Deploying to environment: $ENVIRONMENT"
+
+  deploy:
+    needs: prepare
+    runs-on: ubuntu-latest
+    environment: ${{ needs.prepare.outputs.environment }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set deployment variables
+        id: vars
+        run: |
+          # Read environment-scoped variables (set in GitHub Environments UI)
+          GCP_PROJECT_ID="${{ vars.GCP_PROJECT_ID }}"
+          GCP_REGION="${{ vars.GCP_REGION || 'asia-east2' }}"
+          SERVICE_NAME="neo-engine-api-${{ needs.prepare.outputs.environment }}"
+          
+          # Extract service account email from deployment service account JSON
+          # If CLOUD_RUN_SERVICE_ACCOUNT is set, use it; otherwise extract from GCP_DEPLOY_SERVICE_ACCOUNT
+          if [ -n "${{ vars.CLOUD_RUN_SERVICE_ACCOUNT }}" ]; then
+            SERVICE_ACCOUNT_EMAIL="${{ vars.CLOUD_RUN_SERVICE_ACCOUNT }}@${GCP_PROJECT_ID}.iam.gserviceaccount.com"
+          else
+            # Extract service account email from the deployment service account JSON
+            SERVICE_ACCOUNT_EMAIL=$(echo '${{ secrets.GCP_DEPLOY_SERVICE_ACCOUNT }}' | jq -r '.client_email')
+          fi
+          
+          echo "project_id=$GCP_PROJECT_ID" >> $GITHUB_OUTPUT
+          echo "region=$GCP_REGION" >> $GITHUB_OUTPUT
+          echo "service_name=$SERVICE_NAME" >> $GITHUB_OUTPUT
+          echo "service_account=$SERVICE_ACCOUNT_EMAIL" >> $GITHUB_OUTPUT
+          
+          echo "Project ID: $GCP_PROJECT_ID"
+          echo "Region: $GCP_REGION"
+          echo "Service Name: $SERVICE_NAME"
+          echo "Service Account: $SERVICE_ACCOUNT_EMAIL"
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_DEPLOY_SERVICE_ACCOUNT }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Configure Docker for GCR/Artifact Registry
+        run: |
+          gcloud auth configure-docker ${{ steps.vars.outputs.region }}-docker.pkg.dev --quiet
+
+      - name: Create GCS credentials file from secret
+        run: |
+          mkdir -p api
+          echo '${{ secrets.GCS_CREDENTIALS_JSON }}' > api/gcs.json
+          echo "✅ GCS credentials file created"
+
+      - name: Create .env file for Docker build
+        working-directory: api
+        run: |
+          cat > .env << EOF
+          API_SECRET=${{ secrets.API_SECRET }}
+          GCS_BUCKET_NAME=${{ vars.GCS_BUCKET_NAME }}
+          GCS_PROJECT_ID=${{ steps.vars.outputs.project_id }}
+          GCS_CREDENTIALS_PATH=/app/api/gcs.json
+          HOST=0.0.0.0
+          PORT=8080
+          EOF
+          echo "✅ Environment file created for Docker build"
+
+      - name: Create env-vars.yaml for Cloud Run
+        run: |
+          cat > env-vars.yaml << EOF
+          API_SECRET: ${{ secrets.API_SECRET }}
+          GCS_BUCKET_NAME: ${{ vars.GCS_BUCKET_NAME }}
+          GCS_PROJECT_ID: ${{ steps.vars.outputs.project_id }}
+          GCS_CREDENTIALS_PATH: /app/api/gcs.json
+          HOST: 0.0.0.0
+          EOF
+          echo "✅ Environment variables YAML file created for Cloud Run"
+          echo "Note: PORT is automatically set by Cloud Run, do not include it in env vars"
+
+      - name: Build Docker image
+        run: |
+          IMAGE_TAG="${{ steps.vars.outputs.region }}-docker.pkg.dev/${{ steps.vars.outputs.project_id }}/neo-engine/neo-engine-api:${{ needs.prepare.outputs.tag }}"
+          docker build -f api/Dockerfile -t $IMAGE_TAG .
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+
+      - name: Push Docker image
+        run: |
+          docker push ${{ env.IMAGE_TAG }}
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy ${{ steps.vars.outputs.service_name }} \
+            --image ${{ env.IMAGE_TAG }} \
+            --platform managed \
+            --region ${{ steps.vars.outputs.region }} \
+            --project ${{ steps.vars.outputs.project_id }} \
+            --allow-unauthenticated \
+            --memory 2Gi \
+            --cpu 2 \
+            --timeout 300 \
+            --max-instances 1 \
+            --min-instances 0 \
+            --port 8080 \
+            --env-vars-file env-vars.yaml \
+            --service-account ${{ steps.vars.outputs.service_account }}
+
+      - name: Get service URL
+        id: service-url
+        run: |
+          URL=$(gcloud run services describe ${{ steps.vars.outputs.service_name }} \
+            --platform managed \
+            --region ${{ steps.vars.outputs.region }} \
+            --project ${{ steps.vars.outputs.project_id }} \
+            --format 'value(status.url)')
+          echo "url=$URL" >> $GITHUB_OUTPUT
+          echo "Service URL: $URL"
+
+      - name: Deployment summary
+        run: |
+          echo "## 🚀 Deployment Complete!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment:** ${{ needs.prepare.outputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Tag:** ${{ needs.prepare.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Project:** ${{ steps.vars.outputs.project_id }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Region:** ${{ steps.vars.outputs.region }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Service:** ${{ steps.vars.outputs.service_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Service URL:** ${{ steps.service-url.outputs.url }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### API Endpoints" >> $GITHUB_STEP_SUMMARY
+          echo "- Health: ${{ steps.service-url.outputs.url }}/health" >> $GITHUB_STEP_SUMMARY
+          echo "- Generate: ${{ steps.service-url.outputs.url }}/neo/api/v1/generate" >> $GITHUB_STEP_SUMMARY
+

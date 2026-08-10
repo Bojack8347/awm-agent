@@ -1,0 +1,8 @@
+__pycache__/
+.DS_STORE
+.env
+gcs.json
+gcdeploy.json
+*.json
+!package.json
+!package-lock.json

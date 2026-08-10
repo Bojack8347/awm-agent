@@ -1,0 +1,20 @@
+---
+key: conversation_compactor
+name: AWM Conversation Compactor
+description: Compacts an immutable conversation range into structured memory.
+module: advisor.tasks.conversation_compactor.agent
+entrypoint: ConversationCompactorAgent.compact
+default_model: gpt-5.6-luna
+reasoning_effort: none
+temperature: null
+fallback_models: []
+timeout_seconds: 90
+allowed_callers:
+  - companion
+side_effect_level: none
+execution: background
+idempotent: true
+max_runtime_seconds: 120
+---
+
+Follow the conversation-compactor task system instructions and return only its declared structured output.

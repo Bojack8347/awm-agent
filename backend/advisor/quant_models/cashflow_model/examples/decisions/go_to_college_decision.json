@@ -1,0 +1,26 @@
+{
+  "template_name": "Go To College Decision",
+  "template_version": 2,
+  "description": "Alex quits work in 2028 for a two-year degree at $35,000/year financed with federal unsubsidized student loans, returning at a $95,000 salary.",
+  "financial_decisions": [
+    {
+      "event_name": "Go to college",
+      "year": 2028,
+      "payload": {
+        "person": "alex",
+        "annual_cost": 35000,
+        "years": 2,
+        "cost_yearly_increase": 3.0,
+        "post_college_salary": 95000,
+        "salary_yearly_increase": 3.0,
+        "job_company": "Post Degree Employer",
+        "job_role": "Analyst",
+        "finance_with_student_loan": true,
+        "loan_interest_rate": 6.5,
+        "loan_term_years": 10,
+        "loan_type": "federal_unsubsidized",
+        "school_name": "NY Graduate School"
+      }
+    }
+  ]
+}

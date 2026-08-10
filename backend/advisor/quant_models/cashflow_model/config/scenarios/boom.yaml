@@ -1,0 +1,9 @@
+# Economic boom scenario - Higher interest rates and growth
+accounts:
+  bank:
+    default_interest_rate: 3.0  # Higher interest rates
+  brokerage:
+    default_growth_rate: 12.0  # Higher growth expectations
+retirement:
+  ira:
+    default_growth_rate: 10.0  # Higher retirement growth

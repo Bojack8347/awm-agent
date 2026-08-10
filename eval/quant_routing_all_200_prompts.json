@@ -1,0 +1,2121 @@
+{
+  "schema_version": "arc.quant_routing_dataset.v1",
+  "case_count": 200,
+  "intent_balance": {
+    "cash_flow_model": 100,
+    "asset_allocation_model": 80,
+    "no_quant_model": 20
+  },
+  "cases": [
+    {
+      "case_id": "Q001",
+      "intent": "cash_flow_model",
+      "category": "cashflow_explicit",
+      "prompt": "Show me my cash flow for the next 20 years.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q002",
+      "intent": "cash_flow_model",
+      "category": "cashflow_explicit",
+      "prompt": "Run a cashflow projection using my current income and expenses.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q003",
+      "intent": "cash_flow_model",
+      "category": "cashflow_explicit",
+      "prompt": "What does my monthly surplus look like after all recurring bills?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q004",
+      "intent": "cash_flow_model",
+      "category": "cashflow_explicit",
+      "prompt": "Forecast our household cash flow through retirement.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q005",
+      "intent": "cash_flow_model",
+      "category": "cashflow_explicit",
+      "prompt": "Model our future spending and account balances year by year.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q006",
+      "intent": "cash_flow_model",
+      "category": "cashflow_explicit",
+      "prompt": "Give me a deterministic cash-flow baseline before we make changes.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q007",
+      "intent": "cash_flow_model",
+      "category": "cashflow_explicit",
+      "prompt": "How much money flows in and out each year under the current plan?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q008",
+      "intent": "cash_flow_model",
+      "category": "cashflow_explicit",
+      "prompt": "Project whether my bank and brokerage balances eventually run out.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q009",
+      "intent": "cash_flow_model",
+      "category": "cashflow_explicit",
+      "prompt": "Can you calculate our annual cash surplus and savings rate?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q010",
+      "intent": "cash_flow_model",
+      "category": "cashflow_explicit",
+      "prompt": "Use the cash flow model to assess our current financial trajectory.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q011",
+      "intent": "cash_flow_model",
+      "category": "cashflow_affordability",
+      "prompt": "Can we afford to put $80,000 toward a home in three years?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q012",
+      "intent": "cash_flow_model",
+      "category": "cashflow_affordability",
+      "prompt": "How much can I invest without weakening my emergency reserve?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q013",
+      "intent": "cash_flow_model",
+      "category": "cashflow_affordability",
+      "prompt": "Can our finances support $40,000 a year of college costs?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q014",
+      "intent": "cash_flow_model",
+      "category": "cashflow_affordability",
+      "prompt": "Is retiring at 60 affordable with our current spending?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q015",
+      "intent": "cash_flow_model",
+      "category": "cashflow_affordability",
+      "prompt": "What is the most we can safely spend on a vacation home?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q016",
+      "intent": "cash_flow_model",
+      "category": "cashflow_affordability",
+      "prompt": "Can I stop working for a year and still cover all obligations?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q017",
+      "intent": "cash_flow_model",
+      "category": "cashflow_affordability",
+      "prompt": "Would paying off the mortgage now leave us enough liquidity?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q018",
+      "intent": "cash_flow_model",
+      "category": "cashflow_affordability",
+      "prompt": "Can we handle private-school tuition for both children?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q019",
+      "intent": "cash_flow_model",
+      "category": "cashflow_affordability",
+      "prompt": "How much annual gifting can we sustain without a future shortfall?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q020",
+      "intent": "cash_flow_model",
+      "category": "cashflow_affordability",
+      "prompt": "Is a $120,000 renovation realistic given everything else we fund?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q021",
+      "intent": "cash_flow_model",
+      "category": "cashflow_stress",
+      "prompt": "What happens if my salary falls by 30% for two years?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q022",
+      "intent": "cash_flow_model",
+      "category": "cashflow_stress",
+      "prompt": "Stress test our plan if the market drops and I lose my bonus.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q023",
+      "intent": "cash_flow_model",
+      "category": "cashflow_stress",
+      "prompt": "Model a job loss starting next year with expenses unchanged.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q024",
+      "intent": "cash_flow_model",
+      "category": "cashflow_stress",
+      "prompt": "What if healthcare costs rise by $25,000 per year in retirement?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q025",
+      "intent": "cash_flow_model",
+      "category": "cashflow_stress",
+      "prompt": "Run a scenario where our brokerage account loses 35% immediately.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q026",
+      "intent": "cash_flow_model",
+      "category": "cashflow_stress",
+      "prompt": "How resilient is the plan if inflation keeps spending elevated?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q027",
+      "intent": "cash_flow_model",
+      "category": "cashflow_stress",
+      "prompt": "Test the impact of supporting a parent for the next eight years.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q028",
+      "intent": "cash_flow_model",
+      "category": "cashflow_stress",
+      "prompt": "What happens if we retire five years earlier than planned?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q029",
+      "intent": "cash_flow_model",
+      "category": "cashflow_stress",
+      "prompt": "Simulate a recession with lower income and poor investment returns.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q030",
+      "intent": "cash_flow_model",
+      "category": "cashflow_stress",
+      "prompt": "Show the downside if both college costs and housing expenses increase.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q031",
+      "intent": "cash_flow_model",
+      "category": "cashflow_probability",
+      "prompt": "What is the probability that we can fully fund retirement?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q032",
+      "intent": "cash_flow_model",
+      "category": "cashflow_probability",
+      "prompt": "Run Monte Carlo and tell me our chance of meeting every major goal.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q033",
+      "intent": "cash_flow_model",
+      "category": "cashflow_probability",
+      "prompt": "How likely are we to run short of liquid assets before age 65?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q034",
+      "intent": "cash_flow_model",
+      "category": "cashflow_probability",
+      "prompt": "What are the 10th, 50th, and 90th percentile ending balances?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q035",
+      "intent": "cash_flow_model",
+      "category": "cashflow_probability",
+      "prompt": "Estimate the probability that the college fund is fully covered.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q036",
+      "intent": "cash_flow_model",
+      "category": "cashflow_probability",
+      "prompt": "Across uncertain market paths, how often does our plan fail?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q037",
+      "intent": "cash_flow_model",
+      "category": "cashflow_probability",
+      "prompt": "What is the chance our reserve drops below six months of expenses?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q038",
+      "intent": "cash_flow_model",
+      "category": "cashflow_probability",
+      "prompt": "How likely is a cash shortfall after my spouse retires?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q039",
+      "intent": "cash_flow_model",
+      "category": "cashflow_probability",
+      "prompt": "Give me the distribution of terminal wealth under the current plan.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q040",
+      "intent": "cash_flow_model",
+      "category": "cashflow_probability",
+      "prompt": "Which future year has the greatest probability of account depletion?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q041",
+      "intent": "cash_flow_model",
+      "category": "cashflow_implicit",
+      "prompt": "Are we financially on track, or are we quietly falling behind?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q042",
+      "intent": "cash_flow_model",
+      "category": "cashflow_implicit",
+      "prompt": "Will the money last if we live into our nineties?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q043",
+      "intent": "cash_flow_model",
+      "category": "cashflow_implicit",
+      "prompt": "Does this plan survive all the commitments we have made?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q044",
+      "intent": "cash_flow_model",
+      "category": "cashflow_implicit",
+      "prompt": "I want to know whether our lifestyle is sustainable long term.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q045",
+      "intent": "cash_flow_model",
+      "category": "cashflow_implicit",
+      "prompt": "Are we saving enough today for everything coming later?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q046",
+      "intent": "cash_flow_model",
+      "category": "cashflow_implicit",
+      "prompt": "Could a large unexpected expense derail the family plan?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q047",
+      "intent": "cash_flow_model",
+      "category": "cashflow_implicit",
+      "prompt": "Do our resources cover the life we are planning to live?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q048",
+      "intent": "cash_flow_model",
+      "category": "cashflow_implicit",
+      "prompt": "Where is the first point at which our finances become fragile?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q049",
+      "intent": "cash_flow_model",
+      "category": "cashflow_implicit",
+      "prompt": "Will we still have a comfortable buffer after the children finish school?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q050",
+      "intent": "cash_flow_model",
+      "category": "cashflow_implicit",
+      "prompt": "Please assess whether our current path leaves room for surprises.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q051",
+      "intent": "asset_allocation_model",
+      "category": "allocation_explicit",
+      "prompt": "Build an optimized asset allocation for my $250,000 portfolio.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q052",
+      "intent": "asset_allocation_model",
+      "category": "allocation_explicit",
+      "prompt": "Recommend a strategic allocation across asset classes.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q053",
+      "intent": "asset_allocation_model",
+      "category": "allocation_explicit",
+      "prompt": "Use the portfolio optimizer to construct my investment mix.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q054",
+      "intent": "asset_allocation_model",
+      "category": "allocation_explicit",
+      "prompt": "Allocate $500,000 across the available asset classes for growth.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q055",
+      "intent": "asset_allocation_model",
+      "category": "allocation_explicit",
+      "prompt": "Create the target portfolio weights for this money pool.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q056",
+      "intent": "asset_allocation_model",
+      "category": "allocation_explicit",
+      "prompt": "What asset allocation should I use for a ten-year investment horizon?",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q057",
+      "intent": "asset_allocation_model",
+      "category": "allocation_explicit",
+      "prompt": "Optimize my portfolio rather than projecting household cash flow.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q058",
+      "intent": "asset_allocation_model",
+      "category": "allocation_explicit",
+      "prompt": "Produce a diversified model portfolio for the capital I am deploying.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q059",
+      "intent": "asset_allocation_model",
+      "category": "allocation_explicit",
+      "prompt": "Turn my risk target into a concrete asset-class allocation.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q060",
+      "intent": "asset_allocation_model",
+      "category": "allocation_explicit",
+      "prompt": "I am ready for the recommended investment allocation.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q061",
+      "intent": "asset_allocation_model",
+      "category": "allocation_risk_target",
+      "prompt": "Construct a portfolio targeting 10% annual volatility.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q062",
+      "intent": "asset_allocation_model",
+      "category": "allocation_risk_target",
+      "prompt": "What allocation fits a moderate-growth risk profile?",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q063",
+      "intent": "asset_allocation_model",
+      "category": "allocation_risk_target",
+      "prompt": "Optimize for a 12% volatility target with a long horizon.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q064",
+      "intent": "asset_allocation_model",
+      "category": "allocation_risk_target",
+      "prompt": "I want the highest expected return available near 8% volatility.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q065",
+      "intent": "asset_allocation_model",
+      "category": "allocation_risk_target",
+      "prompt": "Build a conservative portfolio with a 6% risk target.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q066",
+      "intent": "asset_allocation_model",
+      "category": "allocation_risk_target",
+      "prompt": "Translate my aggressive risk tolerance into portfolio weights.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q067",
+      "intent": "asset_allocation_model",
+      "category": "allocation_risk_target",
+      "prompt": "Find an allocation that stays close to 9% expected volatility.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q068",
+      "intent": "asset_allocation_model",
+      "category": "allocation_risk_target",
+      "prompt": "Use 30% active risk and optimize the rest passively.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q069",
+      "intent": "asset_allocation_model",
+      "category": "allocation_risk_target",
+      "prompt": "Set the portfolio for moderate risk with some active management.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q070",
+      "intent": "asset_allocation_model",
+      "category": "allocation_risk_target",
+      "prompt": "Create an allocation matching the risk budget we already approved.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q071",
+      "intent": "asset_allocation_model",
+      "category": "allocation_exclusions",
+      "prompt": "Optimize my portfolio but exclude Bitcoin.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q072",
+      "intent": "asset_allocation_model",
+      "category": "allocation_exclusions",
+      "prompt": "Build the allocation without China equity or emerging-market debt.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q073",
+      "intent": "asset_allocation_model",
+      "category": "allocation_exclusions",
+      "prompt": "I want a diversified portfolio with no commodities or hedge funds.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q074",
+      "intent": "asset_allocation_model",
+      "category": "allocation_exclusions",
+      "prompt": "Keep gold available but remove cryptocurrency from the universe.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q075",
+      "intent": "asset_allocation_model",
+      "category": "allocation_exclusions",
+      "prompt": "Construct the investment mix using only plain-vanilla asset classes.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q076",
+      "intent": "asset_allocation_model",
+      "category": "allocation_exclusions",
+      "prompt": "Exclude high-yield bonds and optimize the remaining portfolio.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q077",
+      "intent": "asset_allocation_model",
+      "category": "allocation_exclusions",
+      "prompt": "Do not allocate to India or China, but diversify everything else.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q078",
+      "intent": "asset_allocation_model",
+      "category": "allocation_exclusions",
+      "prompt": "Build my target allocation without any specialized alternatives.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q079",
+      "intent": "asset_allocation_model",
+      "category": "allocation_exclusions",
+      "prompt": "Optimize around my restriction against emerging-market securities.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q080",
+      "intent": "asset_allocation_model",
+      "category": "allocation_exclusions",
+      "prompt": "Respect my exclusions and produce the final portfolio weights.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q081",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implementation",
+      "prompt": "Which funds and managers implement the recommended allocation?",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q082",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implementation",
+      "prompt": "Give me security weights and dollar amounts for a $300,000 portfolio.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q083",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implementation",
+      "prompt": "Build the passive and active sleeves for the target portfolio.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q084",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implementation",
+      "prompt": "Select the implementation vehicles for each asset class.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q085",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implementation",
+      "prompt": "Turn the strategic allocation into investable securities.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q086",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implementation",
+      "prompt": "How should the portfolio be split between active and passive funds?",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q087",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implementation",
+      "prompt": "Provide the final tickers, weights, and notionals for this proposal.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q088",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implementation",
+      "prompt": "Construct the manager lineup after setting the asset-class weights.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q089",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implementation",
+      "prompt": "I need the actual portfolio holdings, not a household projection.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q090",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implementation",
+      "prompt": "Prepare the investable portfolio for policy review.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q091",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implicit",
+      "prompt": "I have $150,000 set aside for long-term growth; put it to work.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q092",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implicit",
+      "prompt": "How should this pool be invested over the next fifteen years?",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q093",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implicit",
+      "prompt": "I am comfortable with moderate risk and want a diversified approach.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q094",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implicit",
+      "prompt": "We settled the goal and risk level; what should we own?",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q095",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implicit",
+      "prompt": "Design the investment mix for money I will not need for a decade.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q096",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implicit",
+      "prompt": "I want less concentration and a more balanced set of exposures.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q097",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implicit",
+      "prompt": "Help me replace my single-stock position with a diversified portfolio.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q098",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implicit",
+      "prompt": "The planning is done; convert the mandate into investments.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q099",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implicit",
+      "prompt": "What mix gives this account a sensible balance of growth and defense?",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "Q100",
+      "intent": "asset_allocation_model",
+      "category": "allocation_implicit",
+      "prompt": "Create a simple portfolio that matches the preferences we discussed.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D001",
+      "intent": "cash_flow_model",
+      "category": "cashflow_colloquial",
+      "prompt": "Can we swing a bigger house without making everything else too tight?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D002",
+      "intent": "cash_flow_model",
+      "category": "cashflow_colloquial",
+      "prompt": "Do we have enough runway if I take six months away from work?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D003",
+      "intent": "cash_flow_model",
+      "category": "cashflow_colloquial",
+      "prompt": "How much wiggle room is really in our plan after the kids' costs?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D004",
+      "intent": "cash_flow_model",
+      "category": "cashflow_colloquial",
+      "prompt": "Would our finances buckle if one paycheck disappeared?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D005",
+      "intent": "cash_flow_model",
+      "category": "cashflow_colloquial",
+      "prompt": "Can our lifestyle keep going like this for another thirty years?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D006",
+      "intent": "cash_flow_model",
+      "category": "cashflow_colloquial",
+      "prompt": "When is the first year the accounts start getting dangerously low?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D007",
+      "intent": "cash_flow_model",
+      "category": "cashflow_colloquial",
+      "prompt": "If private school happens, does the rest of the plan still hang together?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D008",
+      "intent": "cash_flow_model",
+      "category": "cashflow_colloquial",
+      "prompt": "Are we cutting it too close if we help our parents every month?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D009",
+      "intent": "cash_flow_model",
+      "category": "cashflow_colloquial",
+      "prompt": "Could we absorb a surprise $60k expense and still be okay later?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D010",
+      "intent": "cash_flow_model",
+      "category": "cashflow_colloquial",
+      "prompt": "Does the family money have enough runway to cover everything ahead?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D011",
+      "intent": "cash_flow_model",
+      "category": "cashflow_typos_and_shorthand",
+      "prompt": "run a cashflwo projction for the nxt 25 yrs",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D012",
+      "intent": "cash_flow_model",
+      "category": "cashflow_typos_and_shorthand",
+      "prompt": "can we aford an 80k down pmt in 3 yrs?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D013",
+      "intent": "cash_flow_model",
+      "category": "cashflow_typos_and_shorthand",
+      "prompt": "monte carlo pls: odds we dont run out in retirement",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D014",
+      "intent": "cash_flow_model",
+      "category": "cashflow_typos_and_shorthand",
+      "prompt": "stress tst income -30% and expenses same",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D015",
+      "intent": "cash_flow_model",
+      "category": "cashflow_typos_and_shorthand",
+      "prompt": "wats our chance of funding all goals?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D016",
+      "intent": "cash_flow_model",
+      "category": "cashflow_typos_and_shorthand",
+      "prompt": "do a cf forecast thru age 95",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D017",
+      "intent": "cash_flow_model",
+      "category": "cashflow_typos_and_shorthand",
+      "prompt": "will our liquid accts hit zero b4 retirement?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D018",
+      "intent": "cash_flow_model",
+      "category": "cashflow_typos_and_shorthand",
+      "prompt": "scenario: 25k/yr more healthcare after 65",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D019",
+      "intent": "cash_flow_model",
+      "category": "cashflow_typos_and_shorthand",
+      "prompt": "how sustainable r our current spend + savings?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D020",
+      "intent": "cash_flow_model",
+      "category": "cashflow_typos_and_shorthand",
+      "prompt": "projct p10 p50 p90 ending wealth",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D021",
+      "intent": "cash_flow_model",
+      "category": "cashflow_multilingual",
+      "prompt": "我们退休后钱够用吗？请做现金流预测。",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D022",
+      "intent": "cash_flow_model",
+      "category": "cashflow_multilingual",
+      "prompt": "如果我明年失业，家庭财务还能撑多久？",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D023",
+      "intent": "cash_flow_model",
+      "category": "cashflow_multilingual",
+      "prompt": "我们买房付八万美元首付会不会影响退休？",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D024",
+      "intent": "cash_flow_model",
+      "category": "cashflow_multilingual",
+      "prompt": "请计算实现所有目标的概率。",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D025",
+      "intent": "cash_flow_model",
+      "category": "cashflow_multilingual",
+      "prompt": "¿Podemos jubilarnos a los 60 sin quedarnos sin dinero?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D026",
+      "intent": "cash_flow_model",
+      "category": "cashflow_multilingual",
+      "prompt": "¿Qué probabilidad hay de financiar la universidad y la jubilación?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D027",
+      "intent": "cash_flow_model",
+      "category": "cashflow_multilingual",
+      "prompt": "Haz una proyección si nuestros gastos suben 20.000 dólares al año.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D028",
+      "intent": "cash_flow_model",
+      "category": "cashflow_multilingual",
+      "prompt": "Pouvons-nous acheter cette maison sans fragiliser notre retraite ?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D029",
+      "intent": "cash_flow_model",
+      "category": "cashflow_multilingual",
+      "prompt": "Quelle est la probabilité que notre argent dure jusqu'à 95 ans ?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D030",
+      "intent": "cash_flow_model",
+      "category": "cashflow_multilingual",
+      "prompt": "Can you 看一下如果收入下降，我们的现金流还能不能维持？",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D031",
+      "intent": "cash_flow_model",
+      "category": "cashflow_context_followup",
+      "prompt": "What if it happens two years sooner?",
+      "expected_skill": "regular-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1
+        },
+        "active_consultation_checkpoint": {
+          "consultation_type": "regular-consult",
+          "status": "in_progress",
+          "pending_cashflow_request": {
+            "requested": true,
+            "action": "run_cashflow_model",
+            "scenario_type": "affordability",
+            "confidence": 0.95,
+            "source": "prior_turn",
+            "reason": "Resume the pending cash-flow scenario.",
+            "requested_metrics": [
+              "success_probability",
+              "shortfall"
+            ],
+            "scenario_changes": []
+          }
+        }
+      }
+    },
+    {
+      "case_id": "D032",
+      "intent": "cash_flow_model",
+      "category": "cashflow_context_followup",
+      "prompt": "Use 95 instead.",
+      "expected_skill": "regular-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1
+        },
+        "active_consultation_checkpoint": {
+          "consultation_type": "regular-consult",
+          "status": "in_progress",
+          "pending_cashflow_request": {
+            "requested": true,
+            "action": "run_cashflow_model",
+            "scenario_type": "affordability",
+            "confidence": 0.95,
+            "source": "prior_turn",
+            "reason": "Resume the pending cash-flow scenario.",
+            "requested_metrics": [
+              "success_probability",
+              "shortfall"
+            ],
+            "scenario_changes": []
+          }
+        }
+      }
+    },
+    {
+      "case_id": "D033",
+      "intent": "cash_flow_model",
+      "category": "cashflow_context_followup",
+      "prompt": "Make that twenty thousand more each year.",
+      "expected_skill": "regular-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1
+        },
+        "active_consultation_checkpoint": {
+          "consultation_type": "regular-consult",
+          "status": "in_progress",
+          "pending_cashflow_request": {
+            "requested": true,
+            "action": "run_cashflow_model",
+            "scenario_type": "affordability",
+            "confidence": 0.95,
+            "source": "prior_turn",
+            "reason": "Resume the pending cash-flow scenario.",
+            "requested_metrics": [
+              "success_probability",
+              "shortfall"
+            ],
+            "scenario_changes": []
+          }
+        }
+      }
+    },
+    {
+      "case_id": "D034",
+      "intent": "cash_flow_model",
+      "category": "cashflow_context_followup",
+      "prompt": "Okay, now run the downside case.",
+      "expected_skill": "regular-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1
+        },
+        "active_consultation_checkpoint": {
+          "consultation_type": "regular-consult",
+          "status": "in_progress",
+          "pending_cashflow_request": {
+            "requested": true,
+            "action": "run_cashflow_model",
+            "scenario_type": "affordability",
+            "confidence": 0.95,
+            "source": "prior_turn",
+            "reason": "Resume the pending cash-flow scenario.",
+            "requested_metrics": [
+              "success_probability",
+              "shortfall"
+            ],
+            "scenario_changes": []
+          }
+        }
+      }
+    },
+    {
+      "case_id": "D035",
+      "intent": "cash_flow_model",
+      "category": "cashflow_context_followup",
+      "prompt": "How does that change the probability?",
+      "expected_skill": "regular-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1
+        },
+        "active_consultation_checkpoint": {
+          "consultation_type": "regular-consult",
+          "status": "in_progress",
+          "pending_cashflow_request": {
+            "requested": true,
+            "action": "run_cashflow_model",
+            "scenario_type": "affordability",
+            "confidence": 0.95,
+            "source": "prior_turn",
+            "reason": "Resume the pending cash-flow scenario.",
+            "requested_metrics": [
+              "success_probability",
+              "shortfall"
+            ],
+            "scenario_changes": []
+          }
+        }
+      }
+    },
+    {
+      "case_id": "D036",
+      "intent": "cash_flow_model",
+      "category": "cashflow_context_followup",
+      "prompt": "Use the balances I just confirmed.",
+      "expected_skill": "regular-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1
+        },
+        "active_consultation_checkpoint": {
+          "consultation_type": "regular-consult",
+          "status": "in_progress",
+          "pending_cashflow_request": {
+            "requested": true,
+            "action": "run_cashflow_model",
+            "scenario_type": "affordability",
+            "confidence": 0.95,
+            "source": "prior_turn",
+            "reason": "Resume the pending cash-flow scenario.",
+            "requested_metrics": [
+              "success_probability",
+              "shortfall"
+            ],
+            "scenario_changes": []
+          }
+        }
+      }
+    },
+    {
+      "case_id": "D037",
+      "intent": "cash_flow_model",
+      "category": "cashflow_context_followup",
+      "prompt": "Compare it with the original version.",
+      "expected_skill": "regular-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1
+        },
+        "active_consultation_checkpoint": {
+          "consultation_type": "regular-consult",
+          "status": "in_progress",
+          "pending_cashflow_request": {
+            "requested": true,
+            "action": "run_cashflow_model",
+            "scenario_type": "affordability",
+            "confidence": 0.95,
+            "source": "prior_turn",
+            "reason": "Resume the pending cash-flow scenario.",
+            "requested_metrics": [
+              "success_probability",
+              "shortfall"
+            ],
+            "scenario_changes": []
+          }
+        }
+      }
+    },
+    {
+      "case_id": "D038",
+      "intent": "cash_flow_model",
+      "category": "cashflow_context_followup",
+      "prompt": "What about the lower-decile outcome?",
+      "expected_skill": "regular-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1
+        },
+        "active_consultation_checkpoint": {
+          "consultation_type": "regular-consult",
+          "status": "in_progress",
+          "pending_cashflow_request": {
+            "requested": true,
+            "action": "run_cashflow_model",
+            "scenario_type": "affordability",
+            "confidence": 0.95,
+            "source": "prior_turn",
+            "reason": "Resume the pending cash-flow scenario.",
+            "requested_metrics": [
+              "success_probability",
+              "shortfall"
+            ],
+            "scenario_changes": []
+          }
+        }
+      }
+    },
+    {
+      "case_id": "D039",
+      "intent": "cash_flow_model",
+      "category": "cashflow_context_followup",
+      "prompt": "Assume I retire at 62 for that same case.",
+      "expected_skill": "regular-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1
+        },
+        "active_consultation_checkpoint": {
+          "consultation_type": "regular-consult",
+          "status": "in_progress",
+          "pending_cashflow_request": {
+            "requested": true,
+            "action": "run_cashflow_model",
+            "scenario_type": "affordability",
+            "confidence": 0.95,
+            "source": "prior_turn",
+            "reason": "Resume the pending cash-flow scenario.",
+            "requested_metrics": [
+              "success_probability",
+              "shortfall"
+            ],
+            "scenario_changes": []
+          }
+        }
+      }
+    },
+    {
+      "case_id": "D040",
+      "intent": "cash_flow_model",
+      "category": "cashflow_context_followup",
+      "prompt": "Yes, continue with the model we were setting up.",
+      "expected_skill": "regular-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1
+        },
+        "active_consultation_checkpoint": {
+          "consultation_type": "regular-consult",
+          "status": "in_progress",
+          "pending_cashflow_request": {
+            "requested": true,
+            "action": "run_cashflow_model",
+            "scenario_type": "affordability",
+            "confidence": 0.95,
+            "source": "prior_turn",
+            "reason": "Resume the pending cash-flow scenario.",
+            "requested_metrics": [
+              "success_probability",
+              "shortfall"
+            ],
+            "scenario_changes": []
+          }
+        }
+      }
+    },
+    {
+      "case_id": "D041",
+      "intent": "cash_flow_model",
+      "category": "cashflow_mixed_intent",
+      "prompt": "Before choosing an allocation, tell me whether investing $200k leaves enough liquidity.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D042",
+      "intent": "cash_flow_model",
+      "category": "cashflow_mixed_intent",
+      "prompt": "I want a portfolio eventually, but first test whether retirement at 60 works.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D043",
+      "intent": "cash_flow_model",
+      "category": "cashflow_mixed_intent",
+      "prompt": "Check the household plan before turning the remaining money into investments.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D044",
+      "intent": "cash_flow_model",
+      "category": "cashflow_mixed_intent",
+      "prompt": "Can we fund college and then optimize only what is genuinely surplus?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D045",
+      "intent": "cash_flow_model",
+      "category": "cashflow_mixed_intent",
+      "prompt": "Stress test the plan first; asset allocation can come after that.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D046",
+      "intent": "cash_flow_model",
+      "category": "cashflow_mixed_intent",
+      "prompt": "Tell me how much is safe to invest before recommending the mix.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D047",
+      "intent": "cash_flow_model",
+      "category": "cashflow_mixed_intent",
+      "prompt": "Run the longevity case, then we can discuss a more aggressive portfolio.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D048",
+      "intent": "cash_flow_model",
+      "category": "cashflow_mixed_intent",
+      "prompt": "Does a $100k investment weaken the reserve even if the allocation is conservative?",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D049",
+      "intent": "cash_flow_model",
+      "category": "cashflow_mixed_intent",
+      "prompt": "Model the home purchase before deciding which funds to use.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D050",
+      "intent": "cash_flow_model",
+      "category": "cashflow_mixed_intent",
+      "prompt": "First show the goal probability; do not build the portfolio yet.",
+      "expected_skill": "regular-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D051",
+      "intent": "asset_allocation_model",
+      "category": "allocation_colloquial",
+      "prompt": "How should I slice up this investment pot?",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D052",
+      "intent": "asset_allocation_model",
+      "category": "allocation_colloquial",
+      "prompt": "Give this account a sensible mix of growth stuff and safer stuff.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D053",
+      "intent": "asset_allocation_model",
+      "category": "allocation_colloquial",
+      "prompt": "What should we actually own for a middle-of-the-road risk level?",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D054",
+      "intent": "asset_allocation_model",
+      "category": "allocation_colloquial",
+      "prompt": "Spread this money around so one bad market does not wreck it.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D055",
+      "intent": "asset_allocation_model",
+      "category": "allocation_colloquial",
+      "prompt": "Turn my risk comfort into percentages I can invest.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D056",
+      "intent": "asset_allocation_model",
+      "category": "allocation_colloquial",
+      "prompt": "Build me a boring diversified portfolio for the next decade.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D057",
+      "intent": "asset_allocation_model",
+      "category": "allocation_colloquial",
+      "prompt": "How much goes in stocks, bonds, cash, and diversifiers?",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D058",
+      "intent": "asset_allocation_model",
+      "category": "allocation_colloquial",
+      "prompt": "I have the goal sorted; now design the investment mix.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D059",
+      "intent": "asset_allocation_model",
+      "category": "allocation_colloquial",
+      "prompt": "Put together the sleeves for this long-term account.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D060",
+      "intent": "asset_allocation_model",
+      "category": "allocation_colloquial",
+      "prompt": "What portfolio balances upside with sleeping well at night?",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D061",
+      "intent": "asset_allocation_model",
+      "category": "allocation_constraints_and_implementation",
+      "prompt": "Build the portfolio without crypto, China, or private-market exposure.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D062",
+      "intent": "asset_allocation_model",
+      "category": "allocation_constraints_and_implementation",
+      "prompt": "Use ETFs only and keep every position below twenty percent.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D063",
+      "intent": "asset_allocation_model",
+      "category": "allocation_constraints_and_implementation",
+      "prompt": "Give me tickers and dollar weights for the approved risk budget.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D064",
+      "intent": "asset_allocation_model",
+      "category": "allocation_constraints_and_implementation",
+      "prompt": "Keep the portfolio passive except for the bond sleeve.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D065",
+      "intent": "asset_allocation_model",
+      "category": "allocation_constraints_and_implementation",
+      "prompt": "Target roughly nine percent volatility and exclude commodities.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D066",
+      "intent": "asset_allocation_model",
+      "category": "allocation_constraints_and_implementation",
+      "prompt": "Use low-cost funds and avoid emerging markets entirely.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D067",
+      "intent": "asset_allocation_model",
+      "category": "allocation_constraints_and_implementation",
+      "prompt": "Show the strategic weights and the implementation vehicle for each sleeve.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D068",
+      "intent": "asset_allocation_model",
+      "category": "allocation_constraints_and_implementation",
+      "prompt": "Allocate around a large employer-stock position without adding more of it.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D069",
+      "intent": "asset_allocation_model",
+      "category": "allocation_constraints_and_implementation",
+      "prompt": "Make it tax-aware across IRA and taxable accounts.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D070",
+      "intent": "asset_allocation_model",
+      "category": "allocation_constraints_and_implementation",
+      "prompt": "Construct the final manager lineup with no hedge funds.",
+      "expected_skill": "investment-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D071",
+      "intent": "asset_allocation_model",
+      "category": "allocation_context_followup",
+      "prompt": "Use the second option.",
+      "expected_skill": "investment-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1,
+          "money_pool_count": 1
+        },
+        "money_pools": [
+          {
+            "id": "pool-growth",
+            "label": "Long-term growth",
+            "amount": 250000,
+            "horizon_text": "15 years",
+            "risk_tolerance": "moderate_growth",
+            "purpose_type": "growth"
+          }
+        ],
+        "active_consultation_checkpoint": {
+          "consultation_type": "investment-consult",
+          "status": "in_progress",
+          "next_slot": "complexity_preference"
+        },
+        "engagement_objectives": [
+          {
+            "id": "money_pool:pool-growth:complete_inputs",
+            "objective": "Complete investment inputs for the growth pool",
+            "target_writeback": {
+              "type": "money_pool",
+              "subject_id": "pool-growth"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D072",
+      "intent": "asset_allocation_model",
+      "category": "allocation_context_followup",
+      "prompt": "Make that one notch more conservative.",
+      "expected_skill": "investment-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1,
+          "money_pool_count": 1
+        },
+        "money_pools": [
+          {
+            "id": "pool-growth",
+            "label": "Long-term growth",
+            "amount": 250000,
+            "horizon_text": "15 years",
+            "risk_tolerance": "moderate_growth",
+            "purpose_type": "growth"
+          }
+        ],
+        "active_consultation_checkpoint": {
+          "consultation_type": "investment-consult",
+          "status": "in_progress",
+          "next_slot": "complexity_preference"
+        },
+        "engagement_objectives": [
+          {
+            "id": "money_pool:pool-growth:complete_inputs",
+            "objective": "Complete investment inputs for the growth pool",
+            "target_writeback": {
+              "type": "money_pool",
+              "subject_id": "pool-growth"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D073",
+      "intent": "asset_allocation_model",
+      "category": "allocation_context_followup",
+      "prompt": "Remove crypto from it.",
+      "expected_skill": "investment-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1,
+          "money_pool_count": 1
+        },
+        "money_pools": [
+          {
+            "id": "pool-growth",
+            "label": "Long-term growth",
+            "amount": 250000,
+            "horizon_text": "15 years",
+            "risk_tolerance": "moderate_growth",
+            "purpose_type": "growth"
+          }
+        ],
+        "active_consultation_checkpoint": {
+          "consultation_type": "investment-consult",
+          "status": "in_progress",
+          "next_slot": "complexity_preference"
+        },
+        "engagement_objectives": [
+          {
+            "id": "money_pool:pool-growth:complete_inputs",
+            "objective": "Complete investment inputs for the growth pool",
+            "target_writeback": {
+              "type": "money_pool",
+              "subject_id": "pool-growth"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D074",
+      "intent": "asset_allocation_model",
+      "category": "allocation_context_followup",
+      "prompt": "What would the actual holdings be?",
+      "expected_skill": "investment-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1,
+          "money_pool_count": 1
+        },
+        "money_pools": [
+          {
+            "id": "pool-growth",
+            "label": "Long-term growth",
+            "amount": 250000,
+            "horizon_text": "15 years",
+            "risk_tolerance": "moderate_growth",
+            "purpose_type": "growth"
+          }
+        ],
+        "active_consultation_checkpoint": {
+          "consultation_type": "investment-consult",
+          "status": "in_progress",
+          "next_slot": "complexity_preference"
+        },
+        "engagement_objectives": [
+          {
+            "id": "money_pool:pool-growth:complete_inputs",
+            "objective": "Complete investment inputs for the growth pool",
+            "target_writeback": {
+              "type": "money_pool",
+              "subject_id": "pool-growth"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D075",
+      "intent": "asset_allocation_model",
+      "category": "allocation_context_followup",
+      "prompt": "Keep the same goal but lower the volatility.",
+      "expected_skill": "investment-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1,
+          "money_pool_count": 1
+        },
+        "money_pools": [
+          {
+            "id": "pool-growth",
+            "label": "Long-term growth",
+            "amount": 250000,
+            "horizon_text": "15 years",
+            "risk_tolerance": "moderate_growth",
+            "purpose_type": "growth"
+          }
+        ],
+        "active_consultation_checkpoint": {
+          "consultation_type": "investment-consult",
+          "status": "in_progress",
+          "next_slot": "complexity_preference"
+        },
+        "engagement_objectives": [
+          {
+            "id": "money_pool:pool-growth:complete_inputs",
+            "objective": "Complete investment inputs for the growth pool",
+            "target_writeback": {
+              "type": "money_pool",
+              "subject_id": "pool-growth"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D076",
+      "intent": "asset_allocation_model",
+      "category": "allocation_context_followup",
+      "prompt": "Use passive implementation for that pool.",
+      "expected_skill": "investment-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1,
+          "money_pool_count": 1
+        },
+        "money_pools": [
+          {
+            "id": "pool-growth",
+            "label": "Long-term growth",
+            "amount": 250000,
+            "horizon_text": "15 years",
+            "risk_tolerance": "moderate_growth",
+            "purpose_type": "growth"
+          }
+        ],
+        "active_consultation_checkpoint": {
+          "consultation_type": "investment-consult",
+          "status": "in_progress",
+          "next_slot": "complexity_preference"
+        },
+        "engagement_objectives": [
+          {
+            "id": "money_pool:pool-growth:complete_inputs",
+            "objective": "Complete investment inputs for the growth pool",
+            "target_writeback": {
+              "type": "money_pool",
+              "subject_id": "pool-growth"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D077",
+      "intent": "asset_allocation_model",
+      "category": "allocation_context_followup",
+      "prompt": "Now turn those weights into dollar amounts.",
+      "expected_skill": "investment-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1,
+          "money_pool_count": 1
+        },
+        "money_pools": [
+          {
+            "id": "pool-growth",
+            "label": "Long-term growth",
+            "amount": 250000,
+            "horizon_text": "15 years",
+            "risk_tolerance": "moderate_growth",
+            "purpose_type": "growth"
+          }
+        ],
+        "active_consultation_checkpoint": {
+          "consultation_type": "investment-consult",
+          "status": "in_progress",
+          "next_slot": "complexity_preference"
+        },
+        "engagement_objectives": [
+          {
+            "id": "money_pool:pool-growth:complete_inputs",
+            "objective": "Complete investment inputs for the growth pool",
+            "target_writeback": {
+              "type": "money_pool",
+              "subject_id": "pool-growth"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D078",
+      "intent": "asset_allocation_model",
+      "category": "allocation_context_followup",
+      "prompt": "I prefer the simpler version we discussed.",
+      "expected_skill": "investment-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1,
+          "money_pool_count": 1
+        },
+        "money_pools": [
+          {
+            "id": "pool-growth",
+            "label": "Long-term growth",
+            "amount": 250000,
+            "horizon_text": "15 years",
+            "risk_tolerance": "moderate_growth",
+            "purpose_type": "growth"
+          }
+        ],
+        "active_consultation_checkpoint": {
+          "consultation_type": "investment-consult",
+          "status": "in_progress",
+          "next_slot": "complexity_preference"
+        },
+        "engagement_objectives": [
+          {
+            "id": "money_pool:pool-growth:complete_inputs",
+            "objective": "Complete investment inputs for the growth pool",
+            "target_writeback": {
+              "type": "money_pool",
+              "subject_id": "pool-growth"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D079",
+      "intent": "asset_allocation_model",
+      "category": "allocation_context_followup",
+      "prompt": "Add international diversification without changing the horizon.",
+      "expected_skill": "investment-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1,
+          "money_pool_count": 1
+        },
+        "money_pools": [
+          {
+            "id": "pool-growth",
+            "label": "Long-term growth",
+            "amount": 250000,
+            "horizon_text": "15 years",
+            "risk_tolerance": "moderate_growth",
+            "purpose_type": "growth"
+          }
+        ],
+        "active_consultation_checkpoint": {
+          "consultation_type": "investment-consult",
+          "status": "in_progress",
+          "next_slot": "complexity_preference"
+        },
+        "engagement_objectives": [
+          {
+            "id": "money_pool:pool-growth:complete_inputs",
+            "objective": "Complete investment inputs for the growth pool",
+            "target_writeback": {
+              "type": "money_pool",
+              "subject_id": "pool-growth"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D080",
+      "intent": "asset_allocation_model",
+      "category": "allocation_context_followup",
+      "prompt": "Continue with the investment recommendation for that money.",
+      "expected_skill": "investment-consult",
+      "client_file": {
+        "summary": {
+          "open_loop_count": 1,
+          "money_pool_count": 1
+        },
+        "money_pools": [
+          {
+            "id": "pool-growth",
+            "label": "Long-term growth",
+            "amount": 250000,
+            "horizon_text": "15 years",
+            "risk_tolerance": "moderate_growth",
+            "purpose_type": "growth"
+          }
+        ],
+        "active_consultation_checkpoint": {
+          "consultation_type": "investment-consult",
+          "status": "in_progress",
+          "next_slot": "complexity_preference"
+        },
+        "engagement_objectives": [
+          {
+            "id": "money_pool:pool-growth:complete_inputs",
+            "objective": "Complete investment inputs for the growth pool",
+            "target_writeback": {
+              "type": "money_pool",
+              "subject_id": "pool-growth"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "D081",
+      "intent": "no_quant_model",
+      "category": "no_quant_education_and_explanation",
+      "prompt": "What does cash flow mean in plain English?",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D082",
+      "intent": "no_quant_model",
+      "category": "no_quant_education_and_explanation",
+      "prompt": "Explain Monte Carlo simulation without running one.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D083",
+      "intent": "no_quant_model",
+      "category": "no_quant_education_and_explanation",
+      "prompt": "Why do advisors care about liquidity?",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D084",
+      "intent": "no_quant_model",
+      "category": "no_quant_education_and_explanation",
+      "prompt": "What is the difference between cash flow and net worth?",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D085",
+      "intent": "no_quant_model",
+      "category": "no_quant_education_and_explanation",
+      "prompt": "Teach me what a percentile means.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D086",
+      "intent": "no_quant_model",
+      "category": "no_quant_education_and_explanation",
+      "prompt": "How does diversification generally reduce risk?",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D087",
+      "intent": "no_quant_model",
+      "category": "no_quant_education_and_explanation",
+      "prompt": "What is an asset allocation?",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D088",
+      "intent": "no_quant_model",
+      "category": "no_quant_education_and_explanation",
+      "prompt": "Why might someone keep an emergency reserve?",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D089",
+      "intent": "no_quant_model",
+      "category": "no_quant_education_and_explanation",
+      "prompt": "Explain the idea of sequence-of-returns risk.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D090",
+      "intent": "no_quant_model",
+      "category": "no_quant_education_and_explanation",
+      "prompt": "What does a retirement success probability represent?",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D091",
+      "intent": "no_quant_model",
+      "category": "no_quant_negation_and_fact_update",
+      "prompt": "Do not run a cash-flow model; I am only updating my phone number.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D092",
+      "intent": "no_quant_model",
+      "category": "no_quant_negation_and_fact_update",
+      "prompt": "No projection yet—just record that my salary is $210k.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D093",
+      "intent": "no_quant_model",
+      "category": "no_quant_negation_and_fact_update",
+      "prompt": "I'm not asking for an allocation; note that I dislike cryptocurrency.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D094",
+      "intent": "no_quant_model",
+      "category": "no_quant_negation_and_fact_update",
+      "prompt": "Do not optimize anything. My retirement age is now 64.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D095",
+      "intent": "no_quant_model",
+      "category": "no_quant_negation_and_fact_update",
+      "prompt": "Forget the scenario for now; I only want to correct my spending figure.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D096",
+      "intent": "no_quant_model",
+      "category": "no_quant_negation_and_fact_update",
+      "prompt": "Please don't forecast our finances in this conversation.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D097",
+      "intent": "no_quant_model",
+      "category": "no_quant_negation_and_fact_update",
+      "prompt": "No Monte Carlo—just confirm that the account balances are correct.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D098",
+      "intent": "no_quant_model",
+      "category": "no_quant_negation_and_fact_update",
+      "prompt": "I am not ready for investment advice or a household projection.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D099",
+      "intent": "no_quant_model",
+      "category": "no_quant_negation_and_fact_update",
+      "prompt": "Pause the model work and save my new income information.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    },
+    {
+      "case_id": "D100",
+      "intent": "no_quant_model",
+      "category": "no_quant_negation_and_fact_update",
+      "prompt": "This is a factual correction, not a request to calculate anything.",
+      "expected_skill": "onboarding-consult",
+      "client_file": {}
+    }
+  ]
+}

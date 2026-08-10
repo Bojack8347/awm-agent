@@ -1,0 +1,25 @@
+{
+  "template_name": "Agent Financial Decision Input Example",
+  "template_version": 1,
+  "description": "Example decision file for --financial-decisions. Unknown financial decision categories are treated as one-time expenses.",
+  "financial_decisions": [
+    {
+      "event_name": "Vacation",
+      "year": 2029,
+      "payload": {
+        "person": "primary",
+        "amount": 1234
+      }
+    },
+    {
+      "event_name": "One-time income",
+      "year": 2030,
+      "payload": {
+        "person": "primary",
+        "name": "Signing bonus",
+        "amount": 5000,
+        "taxable": true
+      }
+    }
+  ]
+}

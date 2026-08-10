@@ -1,0 +1,28 @@
+# High tax scenario - Increased tax rates
+tax:
+  federal:
+    standard_deduction:
+      single: 10000  # Lower deductions
+      married_filing_jointly: 20000
+    tax_brackets:
+      single:
+        - [0, 10000, 15]
+        - [10001, 40000, 25]
+        - [40001, 85000, 30]
+        - [85001, 160000, 35]
+        - [160001, 200000, 40]
+        - [200001, 500000, 45]
+        - [500001, .inf, 50]
+      married_filing_jointly:
+        - [0, 20000, 15]
+        - [20001, 80000, 25]
+        - [80001, 170000, 30]
+        - [170001, 320000, 35]
+        - [320001, 400000, 40]
+        - [400001, 600000, 45]
+        - [600001, .inf, 50]
+  state:
+    jurisdiction: flat
+    tax_rate: 10.0  # Higher state tax
+  fica:
+    social_security_rate: 7.5  # Higher FICA

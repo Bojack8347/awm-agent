@@ -1,0 +1,31 @@
+{
+  "description": "Risk-return lookup table generated from the asset allocation model. Each entry shows the expected portfolio return at a given volatility level, assuming 0% active risk and no asset class exclusions.",
+  "generated_at": "2026-03-17T12:53:45Z",
+  "parameters": {
+    "active_risk_percentage": 0.0,
+    "excluded_asset_classes": []
+  },
+  "cma_source": {
+    "workbook": "backend/advisor/quant_models/asset_allocation_model/SAA Model/Inputs/L1 Asset Allocation/CMA.xlsx",
+    "expected_returns_and_volatilities_sheet": "Expected R&R",
+    "expected_correlation_matrix_sheet": "Expected Corr Matrix"
+  },
+  "entries": [
+    {"target_volatility_pct": 5, "expected_return_pct": 6.12, "actual_volatility_pct": 6.75, "risk_label": "conservative", "num_securities": 15},
+    {"target_volatility_pct": 6, "expected_return_pct": 6.44, "actual_volatility_pct": 7.77, "risk_label": "conservative", "num_securities": 15},
+    {"target_volatility_pct": 7, "expected_return_pct": 6.78, "actual_volatility_pct": 8.74, "risk_label": "conservative", "num_securities": 15},
+    {"target_volatility_pct": 8, "expected_return_pct": 7.39, "actual_volatility_pct": 8.31, "risk_label": "moderate_conservative", "num_securities": 14},
+    {"target_volatility_pct": 9, "expected_return_pct": 8.18, "actual_volatility_pct": 9.28, "risk_label": "moderate_conservative", "num_securities": 15},
+    {"target_volatility_pct": 10, "expected_return_pct": 8.85, "actual_volatility_pct": 10.24, "risk_label": "moderate", "num_securities": 15},
+    {"target_volatility_pct": 11, "expected_return_pct": 9.47, "actual_volatility_pct": 11.2, "risk_label": "moderate", "num_securities": 15},
+    {"target_volatility_pct": 12, "expected_return_pct": 10.06, "actual_volatility_pct": 12.16, "risk_label": "moderate", "num_securities": 15},
+    {"target_volatility_pct": 13, "expected_return_pct": 10.75, "actual_volatility_pct": 13.15, "risk_label": "moderate_aggressive", "num_securities": 15},
+    {"target_volatility_pct": 14, "expected_return_pct": 11.38, "actual_volatility_pct": 14.21, "risk_label": "moderate_aggressive", "num_securities": 13},
+    {"target_volatility_pct": 15, "expected_return_pct": 12.27, "actual_volatility_pct": 15.48, "risk_label": "moderate_aggressive", "num_securities": 14},
+    {"target_volatility_pct": 16, "expected_return_pct": 14.09, "actual_volatility_pct": 16.1, "risk_label": "aggressive", "num_securities": 11},
+    {"target_volatility_pct": 17, "expected_return_pct": 15.52, "actual_volatility_pct": 16.46, "risk_label": "aggressive", "num_securities": 14},
+    {"target_volatility_pct": 18, "expected_return_pct": 16.68, "actual_volatility_pct": 16.88, "risk_label": "aggressive", "num_securities": 14},
+    {"target_volatility_pct": 19, "expected_return_pct": 17.7, "actual_volatility_pct": 17.31, "risk_label": "very_aggressive", "num_securities": 12},
+    {"target_volatility_pct": 20, "expected_return_pct": 18.64, "actual_volatility_pct": 17.73, "risk_label": "very_aggressive", "num_securities": 13}
+  ]
+}

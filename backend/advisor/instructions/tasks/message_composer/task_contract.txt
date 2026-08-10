@@ -1,0 +1,20 @@
+---
+key: message_composer
+name: AWM Message Composer
+description: Composes proactive companion messages from triggers.
+module: advisor.tasks.message_composer.agent
+entrypoint: MessageComposerAgent.compose
+default_model: gpt-5.6-luna
+reasoning_effort: none
+temperature: null
+fallback_models: []
+timeout_seconds: 90
+allowed_callers:
+  - proactive_planner
+side_effect_level: none
+execution: background
+idempotent: false
+max_runtime_seconds: 90
+---
+
+Follow the message-composer task system instructions and return only its declared structured output.

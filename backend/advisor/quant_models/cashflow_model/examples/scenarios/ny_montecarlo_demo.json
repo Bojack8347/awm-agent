@@ -1,0 +1,74 @@
+{
+  "template_name": "NY Monte Carlo Demo",
+  "template_version": 1,
+  "description": "Single NY professional with allocation-based 401k and brokerage-style investment for Monte Carlo runs: life-model run ... --monte-carlo 500 --mc-seed 42",
+  "start_year": 2026,
+  "end_year": 2056,
+  "family_name": "Morgan Cashflow Scenario",
+  "people": [
+    {
+      "id": "morgan",
+      "name": "Morgan",
+      "age": 35,
+      "retirement_age": 65,
+      "state": "NY",
+      "spending": {
+        "base": 45000,
+        "yearly_increase": 2.5
+      },
+      "bank_accounts": [
+        {
+          "company": "NY Bank",
+          "type": "Checking",
+          "balance": 40000,
+          "interest_rate": 1.0
+        }
+      ],
+      "apartments": [
+        {
+          "name": "Queens Rental",
+          "monthly_rent": 2300,
+          "yearly_increase": 2.5
+        }
+      ],
+      "jobs": [
+        {
+          "id": "morgan_job",
+          "company": "NY Employer",
+          "role": "Professional",
+          "salary": {
+            "base": 120000,
+            "yearly_increase": 3.0
+          },
+          "401k": {
+            "pretax_balance": 150000,
+            "pretax_contrib_percent": 10,
+            "company_match_percent": 4,
+            "asset_allocation": [
+              {"asset": "US Equity", "weight": 70},
+              {"asset": "US Treasury", "weight": 30}
+            ]
+          }
+        }
+      ],
+      "investment_returns": [
+        {
+          "balance": 100000,
+          "asset_allocation": [
+            {"asset": "US Equity", "weight": 60},
+            {"asset": "US Treasury", "weight": 30},
+            {"asset": "Gold", "weight": 10}
+          ],
+          "asset_return_rates": [
+            {"asset": "US Equity", "return_rate": 9.0},
+            {"asset": "US Treasury", "return_rate": 3.5},
+            {"asset": "Gold", "return_rate": 4.0}
+          ],
+          "payout_to_bank": false,
+          "taxable": true
+        }
+      ]
+    }
+  ],
+  "events": []
+}
