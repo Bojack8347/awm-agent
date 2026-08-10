@@ -93,7 +93,7 @@ def frame(ax):
         lambda v, _: (("-" if v < 0 else "") + (f"${abs(v)/1e6:.0f}M" if abs(v) >= 1e6 else f"${abs(v)/1e3:.0f}K"))))
     ax.set_xticks([45, 55, 65, 75])
     ax.set_xlim(41, 84.6)
-    ax.axvline(60, color=MUT, linewidth=0.5, linestyle=(0, (1, 2)))
+    ax.axvline(60, color=MUT, linewidth=0.5)
     ax.text(60, ax.get_ylim()[1], " retire", fontsize=5.4, color=MUT,
             ha="left", va="top")
 
@@ -127,8 +127,8 @@ for row in M:
     ax.plot(ages, row, color=PATHG, linewidth=0.35, alpha=0.38)
 ax.set_ylim(Y_LO, Y_HI)
 ax.plot(ages, p50, color=BLUE, linewidth=1.5)
-ax.plot(ages, p10, color=BLUE, linewidth=0.7, linestyle=(0, (3, 1.6)))
-ax.plot(ages, p90, color=BLUE, linewidth=0.7, linestyle=(0, (3, 1.6)))
+ax.plot(ages, p10, color=BLUE, linewidth=0.6, alpha=0.75)
+ax.plot(ages, p90, color=BLUE, linewidth=0.6, alpha=0.75)
 frame(ax)
 ax.text(ages[-1], p90[-1], "  p90", fontsize=5.4, color=BLUE,
         ha="left", va="center", clip_on=False)
